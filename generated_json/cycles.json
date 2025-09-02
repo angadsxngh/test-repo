@@ -1,0 +1,212 @@
+[
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Analytics",
+    "project_identifier": "ANAL34",
+    "name": "Performance Foundation",
+    "description": "Address core performance issues including real-time analytics processing latency and batch analytics queue overflow. Focus on establishing stable processing infrastructure and optimizing memory usage."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Analytics",
+    "project_identifier": "ANAL34",
+    "name": "Data Integration",
+    "description": "Implement solutions for cross-referenced publication impact scores and author contribution metrics synchronization. Ensure consistent data flow across research teams."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Analytics",
+    "project_identifier": "ANAL34",
+    "name": "Visualization Enhancement",
+    "description": "Resolve geographic research distribution visualization bugs and citation network graph rendering issues. Optimize dashboard performance and graphical elements."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Analytics",
+    "project_identifier": "ANAL34",
+    "name": "Analytics Logic",
+    "description": "Fix calculation errors in interdisciplinary research scoring and improve research trend prediction model accuracy. Focus on core analytics algorithm improvements."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Analytics",
+    "project_identifier": "ANAL34",
+    "name": "Dashboard Optimization",
+    "description": "Optimize funding analysis dashboard memory usage and resolve peer review analytics timeout issues. Ensure stable dashboard performance under load."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLIN14",
+    "name": "Storage Optimization",
+    "description": "Address core storage efficiency issues including cold storage compression, ElasticSearch shard distribution, and Prometheus retention policies to establish stable data foundation."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLIN14",
+    "name": "Database Performance",
+    "description": "Resolve database connectivity and caching challenges by fixing MongoDB timeouts, optimizing Redis cache eviction, and improving database load distribution."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLIN14",
+    "name": "Network Infrastructure",
+    "description": "Enhance network architecture by resolving Cloud NAT gateway limitations, implementing proper CORS configurations, and optimizing service mesh routing."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLIN14",
+    "name": "Resource Scaling",
+    "description": "Improve system scalability by addressing Kubernetes node autoscaling delays and implementing more efficient job queue processing."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLIN14",
+    "name": "Deployment Pipeline",
+    "description": "Streamline deployment processes by resolving Terraform state lock contention and implementing parallel deployment capabilities."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MALEPR3",
+    "name": "Pipeline Stability",
+    "description": "Address critical pipeline issues including GPU memory leaks in transformer training and batch processing deadlocks in feature engineering. This establishes a stable foundation for model development."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MALEPR3",
+    "name": "Model Architecture Optimization",
+    "description": "Focus on core model architecture improvements by resolving attention layer performance issues and gradient instability in multi-task classifiers. This cycle strengthens the fundamental ML components."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MALEPR3",
+    "name": "Data Processing Enhancement",
+    "description": "Improve data handling by fixing embeddings cache synchronization and token length inconsistencies in abstract summarization. This ensures reliable data processing across the pipeline."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MALEPR3",
+    "name": "Classification Refinement",
+    "description": "Enhance classification accuracy by addressing cross-validation failures in multi-modal classification and methodology classification bias issues. This cycle focuses on improving model accuracy and reducing bias."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MALEPR3",
+    "name": "Content Analysis Improvement",
+    "description": "Perfect content analysis capabilities by resolving duplicate content detection false positives and reference string parsing failures. This finalizes the system's ability to handle diverse research content."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Backend APIs",
+    "project_identifier": "BAAPD2",
+    "name": "Authentication Foundation",
+    "description": "Address core authentication and permission handling by fixing token refresh endpoint and stale permissions issue. This establishes the security baseline for all other API work."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Backend APIs",
+    "project_identifier": "BAAPD2",
+    "name": "Data Layer Stability",
+    "description": "Resolve fundamental data handling issues including race conditions in dataset versioning and Redis cache invalidation problems. Focus on data consistency and concurrent access patterns."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Backend APIs",
+    "project_identifier": "BAAPD2",
+    "name": "Connection Management",
+    "description": "Tackle connection-related issues including GraphQL subscription memory leaks and WebSocket drops during annotation sync. Improve overall connection stability and resource management."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Backend APIs",
+    "project_identifier": "BAAPD2",
+    "name": "Processing Pipeline",
+    "description": "Fix document processing challenges including PDF queue timeouts and metadata extraction for non-ASCII DOIs. Enhance robustness of document handling pipeline."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Backend APIs",
+    "project_identifier": "BAAPD2",
+    "name": "API Optimization",
+    "description": "Resolve remaining API performance issues including bulk citation export formatting, batch reference resolution deadlocks, and search field weight handling. Focus on API reliability and consistency."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRFLH4",
+    "name": "Core Editor Stability",
+    "description": "Focus on stabilizing fundamental editing capabilities by fixing markdown table paste issues and LaTeX equation rendering alignment. This establishes reliable base functionality for content creation."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRFLH4",
+    "name": "Reference System Enhancement",
+    "description": "Address citation-related functionality including preview modal performance, citation style switching, and reference graph visualization issues. This cycle strengthens the academic reference management features."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRFLH4",
+    "name": "Document Processing Optimization",
+    "description": "Improve handling of large-scale document operations including PDF thumbnail generation and bulk tag assignment for large collections. This ensures the system can handle production-scale content volumes."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRFLH4",
+    "name": "Collaboration Features",
+    "description": "Resolve multi-user functionality issues including annotation syncing across browser tabs and real-time collaborative note updates. This cycle enhances the platform's collaborative capabilities."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRFLH4",
+    "name": "Accessibility Refinement",
+    "description": "Implement keyboard accessibility for search filters and optimize UI component performance across all features. This ensures the platform meets accessibility standards and performs smoothly."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USINEXQ",
+    "name": "Core Layout Fixes",
+    "description": "Address fundamental layout and structure issues including bulk metadata editor breakpoints and annotation sidebar behavior during PDF scrolling."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USINEXQ",
+    "name": "Touch Interface Enhancement",
+    "description": "Improve touch device interactions by fixing reference management drag-and-drop and implementing proper multi-select gesture controls for iPad Pro."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USINEXQ",
+    "name": "Accessibility Implementation",
+    "description": "Focus on WCAG compliance by correcting color contrast ratios in dark mode and fixing duplicate screen reader announcements in the filter panel."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USINEXQ",
+    "name": "Navigation Refinement",
+    "description": "Enhance keyboard navigation in search results and correct focus state management after modal interactions."
+  },
+  {
+    "workspace_slug": "nexova-tech",
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USINEXQ",
+    "name": "Preview System Optimization",
+    "description": "Improve preview functionality by fixing LaTeX equation rendering in citation tooltips and implementing real-time bibliography style updates."
+  }
+]

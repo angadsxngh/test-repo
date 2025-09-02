@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Analytics",
+    "identifier": "ANAL34",
+    "description": "Business intelligence, data visualization, and analytics infrastructure for data-driven decision making",
+    "cover_image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&w=870",
+    "cover_image_asset": null,
+    "cover_image_url": "https://images.unsplash.com/photo-1542202229-7d93c33f5d07?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&w=870",
+    "logo_props": {
+      "in_use": "emoji",
+      "emoji": {
+        "value": "128204"
+      }
+    },
+    "network": 2,
+    "project_lead": null,
+    "csrfmiddlewaretoken": "NDxZmRPksLK6Z1bsOVFZqe8W3hlGag3p",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "name": "Cloud Infrastructure",
+    "identifier": "CLIN14",
+    "description": "Cloud platform management, infrastructure as code, and scalable system architecture",
+    "cover_image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&w=870",
+    "cover_image_asset": null,
+    "cover_image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&w=870",
+    "logo_props": {
+      "in_use": "emoji",
+      "emoji": {
+        "value": "128204"
+      }
+    },
+    "network": 2,
+    "project_lead": null,
+    "csrfmiddlewaretoken": "UnLRzSKTJ0v8TWJu6loPHiR61cEZ2nCY",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "name": "Machine Learning Processes",
+    "identifier": "MALEPR3",
+    "description": "ML model development, training pipelines, and AI feature implementation",
+    "cover_image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&w=870",
+    "cover_image_asset": null,
+    "cover_image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&w=870",
+    "logo_props": {
+      "in_use": "emoji",
+      "emoji": {
+        "value": "128204"
+      }
+    },
+    "network": 2,
+    "project_lead": null,
+    "csrfmiddlewaretoken": "q9VhW96mXa7QuXXuBTSxwL12v2W55nHk",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "name": "Backend APIs",
+    "identifier": "BAAPD2",
+    "description": "RESTful services, microservices architecture, and server-side application logic",
+    "cover_image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&w=870",
+    "cover_image_asset": null,
+    "cover_image_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&w=870",
+    "logo_props": {
+      "in_use": "emoji",
+      "emoji": {
+        "value": "128204"
+      }
+    },
+    "network": 2,
+    "project_lead": null,
+    "csrfmiddlewaretoken": "4kuQN3z32aWRS9pvfBRzEofuORrL66S4",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "name": "Frontend Flow",
+    "identifier": "FRFLH4",
+    "description": "User-facing web applications, component libraries, and client-side development",
+    "cover_image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&w=870",
+    "cover_image_asset": null,
+    "cover_image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&w=870",
+    "logo_props": {
+      "in_use": "emoji",
+      "emoji": {
+        "value": "128204"
+      }
+    },
+    "network": 2,
+    "project_lead": null,
+    "csrfmiddlewaretoken": "ZNmbfKI6kvI8iwHkf76qfA26RLp8VN7x",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "name": "User Interface and Experience",
+    "identifier": "USINEXQ",
+    "description": "Design systems, user experience optimization, and interface design implementation",
+    "cover_image": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&w=870",
+    "cover_image_asset": null,
+    "cover_image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&w=870",
+    "logo_props": {
+      "in_use": "emoji",
+      "emoji": {
+        "value": "128204"
+      }
+    },
+    "network": 2,
+    "project_lead": null,
+    "csrfmiddlewaretoken": "xwp7H058YAAYsSoBnMPF3JFPO5T4AbDs",
+    "workspace_slug": "nexova-tech"
+  }
+]

@@ -1,0 +1,317 @@
+[
+  {
+    "first_name": "Fatima",
+    "last_name": "Al-Sayed",
+    "email": "fatima.alsayed@outlook.com",
+    "password": "Makkah2023!",
+    "csrfmiddlewaretoken": "irHH5JFuvEb7zOVzXcpEVTRXp6f4eOHIrBRW4GswKzJ1mgHbVcjVWNkWhyv5U1iO"
+  },
+  {
+    "first_name": "Kareem",
+    "last_name": "Nasser",
+    "email": "kareem.nasser@yahoo.com",
+    "password": "Kn8#mj92pL",
+    "csrfmiddlewaretoken": "b2wN3aUJUX7xGYzdRFNdFOlJlBwFnsDzBVHpn3r00zMoALbPqoi0f6UW1NvPp6ZA"
+  },
+  {
+    "first_name": "Erik",
+    "last_name": "Johansson",
+    "email": "erik.johansson@icloud.com",
+    "password": "Vik1ng2023!",
+    "csrfmiddlewaretoken": "kpdKGiekAtfZyyEB2wCUlTQKZfWkwCTvxEHMRJsMpGzrKPIrAnV5DOvZqKoz4QoJ"
+  },
+  {
+    "first_name": "Alejandra",
+    "last_name": "Herrera",
+    "email": "alejandra.herrera@aol.com",
+    "password": "CreArt2023!",
+    "csrfmiddlewaretoken": "43mPgomUd3ugImrVtOc1WkOWme4cSu4nJ77QxgGoIpdtEExMiC9xmA6ng5kPXqOu"
+  },
+  {
+    "first_name": "Folami",
+    "last_name": "Okonjo",
+    "email": "folami.okonjo@gmail.com",
+    "password": "Nig3ria2023!",
+    "csrfmiddlewaretoken": "LyrGBIpd8dAqc8OzBFscGkSqyPgQ9Tq7F0f4scUVj8iOaMTaTQXeeeBEIXZsMrHy"
+  },
+  {
+    "first_name": "Melissa",
+    "last_name": "Patterson",
+    "email": "melissa.patterson@protonmail.com",
+    "password": "Teach2023#mp",
+    "csrfmiddlewaretoken": "YdGXX4T7sIvrAgw7Yt6c577SGJmwrQfsh3RnGaXYkghxtXhgDLfdWdqng3EzAl4c"
+  },
+  {
+    "first_name": "Chioma",
+    "last_name": "Okafor",
+    "email": "chioma.okafor@live.com",
+    "password": "Teach2023!Ng",
+    "csrfmiddlewaretoken": "TCzs15Clps0qQkhPGuvaNTI7YsF7zdpO1xUQOTBKve2kcGL1OlZhIrirHElSZK4A"
+  },
+  {
+    "first_name": "Brandon",
+    "last_name": "Mitchell",
+    "email": "brandon.mitchell@icloud.com",
+    "password": "BmSales2023!",
+    "csrfmiddlewaretoken": "m1AgpS9lkF3EYtxRND7NwwEj968m54pTzfroi145K2gHaXAGwgVhbGSLpvg9tRnf"
+  },
+  {
+    "first_name": "Matteo",
+    "last_name": "Ricci",
+    "email": "matteo.ricci@gmail.com",
+    "password": "Toscana2023!",
+    "csrfmiddlewaretoken": "8tNIGKz6opdMo2JnlzrjAaARCUtUp82HBJslGwHYCkWtfRFq6qkd1Q8X8UkL5qzc"
+  },
+  {
+    "first_name": "Oliver",
+    "last_name": "Blackwood",
+    "email": "oliver.blackwood@outlook.com",
+    "password": "Teach2023#UK",
+    "csrfmiddlewaretoken": "Q74MoSdxK7PJsIsGVpMT6E2dcv3SULoUFVwwWfgHQ6y0ZNVSeaS2a74J6ccPL4D9"
+  },
+  {
+    "first_name": "Rory",
+    "last_name": "Gallagher",
+    "email": "rory.gallagher@gmail.com",
+    "password": "Dub1in2023!",
+    "csrfmiddlewaretoken": "9y14Rif6No2Q0Ifr9yKCcskcp1yJwtxnJQ1mOkRS1CG7xx2HophL0jo7tVKkdg7f"
+  },
+  {
+    "first_name": "Rodrigo",
+    "last_name": "Velasquez",
+    "email": "r.velasquez@outlook.com",
+    "password": "Vela2023#Rx",
+    "csrfmiddlewaretoken": "RXhWfFKYG4bC1BXManLYDmjn8GmD33ZsX2u7kadeQYNElpLWjYwXJhwufUIOqQ8z"
+  },
+  {
+    "first_name": "Jinyoung",
+    "last_name": "Park",
+    "email": "jinyoung.park@hotmail.com",
+    "password": "SeoulSky892!",
+    "csrfmiddlewaretoken": "IUXy6CrdN1qX0UUzd3HHQISEY6l1duys6NzxeSy2VYHblyIA1HpJKnbCV2sRzsiv"
+  },
+  {
+    "first_name": "Astrid",
+    "last_name": "Lindstrom",
+    "email": "astrid.lindstrom@hotmail.com",
+    "password": "N0rdic2023!",
+    "csrfmiddlewaretoken": "FzIUaJlykCOLdNVXEfolBEUlE4tVZoc6Hygnn5NRDivanHnQOJkG5Go2548A3TIo"
+  },
+  {
+    "first_name": "Leila",
+    "last_name": "Darwish",
+    "email": "leila.darwish@gmail.com",
+    "password": "Td8#mK9pN2v",
+    "csrfmiddlewaretoken": "PnetDAvKMd1Dm8En1BX9cBa9wGSeDNugZbBxdCHkdUnZZMeHlEoAKDRWH8Qra7y1"
+  },
+  {
+    "first_name": "Jun",
+    "last_name": "Zhang",
+    "email": "jun.zhang@protonmail.com",
+    "password": "Drg0n2023#!",
+    "csrfmiddlewaretoken": "WXNMSjxnINjRnIGRkOsbV5wE53jQWuKagV3aGW9NyPG11nL8tx1Mcn77K0iY4QCi"
+  },
+  {
+    "first_name": "Oluwaseun",
+    "last_name": "Adebayo",
+    "email": "seun.adebayo@hotmail.com",
+    "password": "Lag0s2023#",
+    "csrfmiddlewaretoken": "eupf4taCSYmIfdcT5exKi76XoKVEsetQBc2cmZKo0LqLPEt63vSElUmblQ2gHZ5Z"
+  },
+  {
+    "first_name": "Chioma",
+    "last_name": "Okonkwo",
+    "email": "chioma.okonkwo@gmail.com",
+    "password": "Nig3ria2023!",
+    "csrfmiddlewaretoken": "SuX5v05fPExh4IHTOQguz8ujWHiMbGGbAvGVSpk4IFKKsUBU6bXGHCwPQXuM03qH"
+  },
+  {
+    "first_name": "Allison",
+    "last_name": "Wheaton",
+    "email": "allison.wheaton@aol.com",
+    "password": "Mkt2023Wh!",
+    "csrfmiddlewaretoken": "4AAqjroyjJr8QiWxiMK5027GZhfTGttEYuwR9NOSaALBFFjoV1MIb4fE3WX1iBD6"
+  },
+  {
+    "first_name": "Nikolai",
+    "last_name": "Petrov",
+    "email": "nikolai.petrov@icloud.com",
+    "password": "NPetrov2023!",
+    "csrfmiddlewaretoken": "pLp9QUJkp8Bzt0w0ItOz789ggIT2LWnsuvsTvxC63kgP5JZfruqpGugjKfMuujLL"
+  },
+  {
+    "first_name": "Annika",
+    "last_name": "Lindholm",
+    "email": "annika.lindholm@outlook.com",
+    "password": "NurseAL2023!",
+    "csrfmiddlewaretoken": "xZoa4Wa3WSDnlbvD9PWWY7c7ELY1Cp4NnWgToKylHK4CyTawgNxzFW2OjCmsE39h"
+  },
+  {
+    "first_name": "Astrid",
+    "last_name": "Lindqvist",
+    "email": "astrid.lindqvist@outlook.com",
+    "password": "Norrsk3n22!",
+    "csrfmiddlewaretoken": "xwol46T5MI5QvLocjGr0xSLdcbMJqVxfLqjVxCNdx83GEIFBYFP0lzuNHugXxop2"
+  },
+  {
+    "first_name": "Siobhan",
+    "last_name": "O'Donnell",
+    "email": "siobhan.odonnell@outlook.com",
+    "password": "Cl0ver2023!",
+    "csrfmiddlewaretoken": "Q7MGU22Kja3aYgvE2aNz6Fdgx1mwjdeZ9mhO04NFD3zdNm3RTMmTk2YdJiq8dZke"
+  },
+  {
+    "first_name": "Roisin",
+    "last_name": "Gallagher",
+    "email": "roisin.gallagher@live.com",
+    "password": "Celtic89!Kn",
+    "csrfmiddlewaretoken": "acMpRHEPCaMTYx7mznilZkRdmoApByexnYpkEexibh4g1QLlOheT2sFc7DE2BSSr"
+  },
+  {
+    "first_name": "Yusuf",
+    "last_name": "Alhamadi",
+    "email": "yusuf.alhamadi@outlook.com",
+    "password": "Mecca2023#pm",
+    "csrfmiddlewaretoken": "vyiiEdcSy6SvChkIT359wKFZkZmEvcvIn9FXImqecWLV7XDbeFyguZmyYCtjoEKU"
+  },
+  {
+    "first_name": "Camila",
+    "last_name": "Velasquez",
+    "email": "camila.velasquez@live.com",
+    "password": "ArtVela2023!",
+    "csrfmiddlewaretoken": "zgBkbhpeF6DELXSaJDyrFfA9ItjnJn7WzoYx99qcBO6C35moLqDC7iAui0Qkhe5n"
+  },
+  {
+    "first_name": "Hiroshi",
+    "last_name": "Nakamura",
+    "email": "hiroshi.nakamura@aol.com",
+    "password": "Cherry2023!",
+    "csrfmiddlewaretoken": "9yVkQLFFYcjIby3K0FW1M2jAwMqm9pfhZjl8KjOzWCr4MgAnDm4zNFfGjPYulbZ3"
+  },
+  {
+    "first_name": "Chiara",
+    "last_name": "Esposito",
+    "email": "chiara.esposito@aol.com",
+    "password": "Firenze92#!",
+    "csrfmiddlewaretoken": "7GwV65P1hs7elGlvBfMQ8w9wWIXLjvRky63y0yHbsrB0P78l8zw44digBOZh00BE"
+  },
+  {
+    "first_name": "Jia",
+    "last_name": "Chen",
+    "email": "jiachen88@aol.com",
+    "password": "DragonP2k23!",
+    "csrfmiddlewaretoken": "wlH8NUeNZkdtEedKkbi7T5IN8kdxp3HAH4ewuPdHrrACPc3A0RLhFVYfG2YeNQRG"
+  },
+  {
+    "first_name": "Hiro",
+    "last_name": "Tanaka",
+    "email": "hiro.tanaka@protonmail.com",
+    "password": "Sakura2023!",
+    "csrfmiddlewaretoken": "Dx96ldmF75WL6vDEDirfrx1z5OVGcVWfc77p6svcpN8FLdijoUR9vd4pK9gEPgl7"
+  },
+  {
+    "first_name": "Magnus",
+    "last_name": "Svensson",
+    "email": "magnus.svensson@gmail.com",
+    "password": "Sthlm2023#!",
+    "csrfmiddlewaretoken": "4TPi72K6vIUQEIIK77mGGaQdUx6IBmeoGEJxakq7AjvyTPTBTFx7ykcazhsbkwAL"
+  },
+  {
+    "first_name": "Zahra",
+    "last_name": "Khoury",
+    "email": "zahra.khoury@icloud.com",
+    "password": "Leb@non2023",
+    "csrfmiddlewaretoken": "hvJcntHbydxcj6lp6hGfPHuMUrRBehOD9UCGIT9p7csS7CbqM8evjiwrmGD3itkV"
+  },
+  {
+    "first_name": "Deirdre",
+    "last_name": "Brennan",
+    "email": "deirdre.brennan@outlook.com",
+    "password": "DBren2023#!",
+    "csrfmiddlewaretoken": "lYOtIeo2MSqdv3JPZYDknml3a9eBNN1HDcxEng9ZXlZqOgAbZJUEDYjBmcvSb7Ax"
+  },
+  {
+    "first_name": "Melissa",
+    "last_name": "Turner",
+    "email": "melissa.turner@outlook.com",
+    "password": "Proj3ct2023!",
+    "csrfmiddlewaretoken": "B2jt5fic5YviLY2CzytcM6nqZ0gtKmGUSMIjxlAT6W8Kj5S4jpdexDwh89goNaGe"
+  },
+  {
+    "first_name": "Layla",
+    "last_name": "Darwish",
+    "email": "layla.darwish@hotmail.com",
+    "password": "Td8$mK9pN2v",
+    "csrfmiddlewaretoken": "IfKE2BfN7927AIiMkzjM5plS1YbjuRNNQQyIVkfPBN2XnxB557JgokcHnGusJ8Qe"
+  },
+  {
+    "first_name": "Chiara",
+    "last_name": "Genovesi",
+    "email": "chiara.genovesi@hotmail.com",
+    "password": "Firenze2023!",
+    "csrfmiddlewaretoken": "QVJOXlZc8qRkgdiTOLaTZ0HL81Za4yg1hKLaqM9xbOWqJr2uPcDCf7hy8tQrs4xn"
+  },
+  {
+    "first_name": "Nadia",
+    "last_name": "Qureshi",
+    "email": "nadia.qureshi@gmail.com",
+    "password": "Nq8#k2pL9vx",
+    "csrfmiddlewaretoken": "3DqrZk8hvyPAAOQZtJPc5JNdCCa2MgryLH5Iq283m7BpcLfuk3Mo9q5oiGwV3X00"
+  },
+  {
+    "first_name": "Zainab",
+    "last_name": "Qureshi",
+    "email": "zainab.qureshi@gmail.com",
+    "password": "Zq8#mK9pN2v",
+    "csrfmiddlewaretoken": "fksWV1ptgh9EaT7WdVeiN3OZ06gaRoLf1OshdL33Vf2ckrZKeTCDj98P4Mw1LyhR"
+  },
+  {
+    "first_name": "Anders",
+    "last_name": "Lindstrom",
+    "email": "anders.lindstrom@gmail.com",
+    "password": "NordSk2023!",
+    "csrfmiddlewaretoken": "4xYkmuvGffKUJnzaYdCRWMgHN5vwyh0bGeBzGob8sV9JmsT7FbdwW8xLBXRm2JY4"
+  },
+  {
+    "first_name": "Bjorn",
+    "last_name": "Nilsson",
+    "email": "bjorn.nilsson@protonmail.com",
+    "password": "Mkt8#vP2nQ",
+    "csrfmiddlewaretoken": "NOKKjXJtpNlkZnsrlRTGWCEK5tIWsONwcfySNPItlQTZo513nTaGyzsqX91ifji9"
+  },
+  {
+    "first_name": "Luca",
+    "last_name": "Moretti",
+    "email": "luca.moretti@gmail.com",
+    "password": "Milano2023!",
+    "csrfmiddlewaretoken": "LG2sUJ4PjPvTcPHkRahy7bj6mM7uwjFmCDH7SfExVdvr1upgUsLoTnS2LDXJgOZA"
+  },
+  {
+    "first_name": "Saoirse",
+    "last_name": "Kavanagh",
+    "email": "saoirse.kavanagh@outlook.com",
+    "password": "Cr8tive2023!",
+    "csrfmiddlewaretoken": "KH8OwI2OYJUl3qI8MOwz019Eetbb0IEbo82UO2ev5WjtvG7bb2gvNIV4p368QF5y"
+  },
+  {
+    "first_name": "Bianca",
+    "last_name": "Conti",
+    "email": "bianca.conti@gmail.com",
+    "password": "Milano2023!",
+    "csrfmiddlewaretoken": "K8uaSBn5ftgJVXfPwtNy6ZSb358qBPKVfkISd72pTlec3zTVBts3PFlk7mqgWqMj"
+  },
+  {
+    "first_name": "Nadia",
+    "last_name": "Khouri",
+    "email": "nadia.khouri@outlook.com",
+    "password": "Teach2023#Leb",
+    "csrfmiddlewaretoken": "yrn3QVXlasCAtldvFVjx9g9QMPYhd1bexW1v0YsGt7UlXl2Nu1qKb8gGzEKX6jJj"
+  },
+  {
+    "first_name": "Hyejin",
+    "last_name": "Park",
+    "email": "hyejin.park@icloud.com",
+    "password": "Lotus2893#",
+    "csrfmiddlewaretoken": "Zjg4yOtZcyef8g0qZRDpVLQb6YOuPnu0aPBiR4NzWL3gJFt8FPCFoUQoGGWrHZmE"
+  }
+]

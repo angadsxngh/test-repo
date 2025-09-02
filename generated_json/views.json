@@ -1,0 +1,938 @@
+[
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "state",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of State",
+    "description": "Kanban board organized by task states",
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLIN14",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "priority",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Priority",
+    "description": "Issue board organized by priority levels",
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLIN14",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "cycle",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Cycles",
+    "description": "Project view organized by development cycles",
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLIN14",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "module",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Modules",
+    "description": "Project view organized by component modules",
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLIN14",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "state",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of State",
+    "description": "Kanban board organized by task states",
+    "project_name": "Analytics",
+    "project_identifier": "ANAL34",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "priority",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Priority",
+    "description": "Issue board organized by priority levels",
+    "project_name": "Analytics",
+    "project_identifier": "ANAL34",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "cycle",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Cycles",
+    "description": "Project view organized by development cycles",
+    "project_name": "Analytics",
+    "project_identifier": "ANAL34",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "module",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Modules",
+    "description": "Project view organized by component modules",
+    "project_name": "Analytics",
+    "project_identifier": "ANAL34",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "state",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of State",
+    "description": "Kanban board organized by task states",
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MALEPR3",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "priority",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Priority",
+    "description": "Issue board organized by priority levels",
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MALEPR3",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "cycle",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Cycles",
+    "description": "Project view organized by development cycles",
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MALEPR3",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "module",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Modules",
+    "description": "Project view organized by component modules",
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MALEPR3",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "state",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of State",
+    "description": "Kanban board organized by task states",
+    "project_name": "Backend APIs",
+    "project_identifier": "BAAPD2",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "priority",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Priority",
+    "description": "Issue board organized by priority levels",
+    "project_name": "Backend APIs",
+    "project_identifier": "BAAPD2",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "cycle",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Cycles",
+    "description": "Project view organized by development cycles",
+    "project_name": "Backend APIs",
+    "project_identifier": "BAAPD2",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "module",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Modules",
+    "description": "Project view organized by component modules",
+    "project_name": "Backend APIs",
+    "project_identifier": "BAAPD2",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "state",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of State",
+    "description": "Kanban board organized by task states",
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USINEXQ",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "priority",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Priority",
+    "description": "Issue board organized by priority levels",
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USINEXQ",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "cycle",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Cycles",
+    "description": "Project view organized by development cycles",
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USINEXQ",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "module",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Modules",
+    "description": "Project view organized by component modules",
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USINEXQ",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "state",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of State",
+    "description": "Kanban board organized by task states",
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRFLH4",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "priority",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Priority",
+    "description": "Issue board organized by priority levels",
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRFLH4",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "cycle",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Cycles",
+    "description": "Project view organized by development cycles",
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRFLH4",
+    "workspace_slug": "nexova-tech"
+  },
+  {
+    "access": 1,
+    "display_filters": {
+      "calendar": {
+        "show_weekends": false,
+        "layout": "month"
+      },
+      "layout": "kanban",
+      "order_by": "sort_order",
+      "group_by": "module",
+      "show_empty_groups": false,
+      "sub_group_by": null,
+      "sub_issue": false,
+      "type": null
+    },
+    "display_properties": {
+      "assignee": true,
+      "attachment_count": true,
+      "created_on": true,
+      "cycle": true,
+      "due_date": true,
+      "estimate": true,
+      "issue_type": true,
+      "key": true,
+      "labels": true,
+      "link": true,
+      "modules": true,
+      "priority": true,
+      "start_date": true,
+      "state": true,
+      "sub_issue_count": true,
+      "updated_on": true
+    },
+    "name": "On the basis of Modules",
+    "description": "Project view organized by component modules",
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRFLH4",
+    "workspace_slug": "nexova-tech"
+  }
+]

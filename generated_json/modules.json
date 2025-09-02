@@ -1,0 +1,272 @@
+[
+  {
+    "name": "Research Metrics Engine",
+    "description": "Core system for calculating and processing research-related metrics including author contributions, impact scores, and interdisciplinary research measurements. Handles the fundamental analytics computations that power research evaluation features.",
+    "status": "planned",
+    "lead_index": 0,
+    "member_count": 2,
+    "project_name": "Analytics",
+    "project_identifier": "ANAL92"
+  },
+  {
+    "name": "Dashboard Performance",
+    "description": "Optimization and maintenance of analytics dashboards focusing on memory usage, loading times, and overall performance. Ensures smooth user experience when accessing funding analysis and peer review analytics interfaces.",
+    "status": "completed",
+    "lead_index": 6,
+    "member_count": 3,
+    "project_name": "Analytics",
+    "project_identifier": "ANAL51"
+  },
+  {
+    "name": "Data Visualization",
+    "description": "Components handling the visual representation of analytics data, including geographic distributions and citation network graphs. Focuses on rendering performance and proper display of complex data relationships.",
+    "status": "backlog",
+    "lead_index": 4,
+    "member_count": 3,
+    "project_name": "Analytics",
+    "project_identifier": "ANAL67"
+  },
+  {
+    "name": "Processing Pipeline",
+    "description": "Infrastructure for handling real-time and batch analytics processing workflows. Manages job queues, processing latency, and system performance during peak usage periods.",
+    "status": "in-progress",
+    "lead_index": 0,
+    "member_count": 3,
+    "project_name": "Analytics",
+    "project_identifier": "ANAL74"
+  },
+  {
+    "name": "Predictive Analytics",
+    "description": "Systems for analyzing trends and generating research predictions based on historical data. Includes model accuracy monitoring and trend analysis algorithms for forecasting research developments.",
+    "status": "completed",
+    "lead_index": 7,
+    "member_count": 2,
+    "project_name": "Analytics",
+    "project_identifier": "ANAL51"
+  },
+  {
+    "name": "Citation Management",
+    "description": "Handles all citation-related functionality including preview modals, reference formatting, and bibliography processing. Focuses on ensuring accurate and performant handling of academic citations and reference styles across the application.",
+    "status": "planned",
+    "lead_index": 5,
+    "member_count": 3,
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRON63"
+  },
+  {
+    "name": "Document Editor Core",
+    "description": "Core text editing and formatting capabilities including markdown processing and LaTeX equation rendering. Ensures consistent document formatting and maintains text integrity across different content types and paste operations.",
+    "status": "completed",
+    "lead_index": 4,
+    "member_count": 1,
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRON31"
+  },
+  {
+    "name": "Collaboration Features",
+    "description": "Real-time collaboration functionality including multi-user synchronization and shared annotation features. Manages state consistency across multiple users and browser instances for concurrent editing scenarios.",
+    "status": "in-progress",
+    "lead_index": 0,
+    "member_count": 1,
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRON43"
+  },
+  {
+    "name": "Media Processing",
+    "description": "Handles processing and generation of media assets including PDF thumbnails and visualization renders. Focuses on optimizing performance for large file operations and complex visual data representations.",
+    "status": "completed",
+    "lead_index": 5,
+    "member_count": 2,
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRON81"
+  },
+  {
+    "name": "Interface Accessibility",
+    "description": "Ensures application-wide accessibility standards including keyboard navigation and modal interactions. Handles user interface components and interactions with focus on accessibility compliance and usability for all users.",
+    "status": "planned",
+    "lead_index": 1,
+    "member_count": 3,
+    "project_name": "Frontend Flow",
+    "project_identifier": "FRON96"
+  },
+  {
+    "name": "Concurrency Management",
+    "description": "Handles race conditions, deadlocks and thread safety issues in concurrent API operations. Focuses on maintaining data consistency and preventing conflicts during high-load parallel processing scenarios.",
+    "status": "completed",
+    "lead_index": 3,
+    "member_count": 1,
+    "project_name": "Backend APIs",
+    "project_identifier": "BACK68"
+  },
+  {
+    "name": "Document Processing",
+    "description": "Manages PDF processing, metadata extraction, and citation handling workflows. Handles multi-language support, DOI processing, and ensures reliable document transformation and data extraction.",
+    "status": "paused",
+    "lead_index": 2,
+    "member_count": 3,
+    "project_name": "Backend APIs",
+    "project_identifier": "BACK74"
+  },
+  {
+    "name": "Cache and Storage",
+    "description": "Handles caching mechanisms, data versioning, and storage optimization. Ensures proper cache invalidation and maintains consistency between cached data and primary storage systems.",
+    "status": "completed",
+    "lead_index": 3,
+    "member_count": 1,
+    "project_name": "Backend APIs",
+    "project_identifier": "BACK66"
+  },
+  {
+    "name": "Real-time Communication",
+    "description": "Manages WebSocket connections, GraphQL subscriptions, and real-time data synchronization. Focuses on maintaining stable connections and efficient data streaming for collaborative features.",
+    "status": "paused",
+    "lead_index": 0,
+    "member_count": 3,
+    "project_name": "Backend APIs",
+    "project_identifier": "BACK75"
+  },
+  {
+    "name": "Search and Discovery",
+    "description": "Handles search functionality, query processing, and result ranking. Ensures accurate field weighting, proper indexing, and optimized search performance across different content types.",
+    "status": "in-progress",
+    "lead_index": 0,
+    "member_count": 3,
+    "project_name": "Backend APIs",
+    "project_identifier": "BACK28"
+  },
+  {
+    "name": "Training Pipeline Performance",
+    "description": "Handles issues related to model training efficiency, memory usage, and pipeline stability. Focuses on optimizing GPU resource utilization and resolving training bottlenecks across different model architectures.",
+    "status": "backlog",
+    "lead_index": 0,
+    "member_count": 1,
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MACH14"
+  },
+  {
+    "name": "Model Validation Framework",
+    "description": "Manages cross-validation processes and quality assurance for machine learning models. Addresses classification accuracy, bias detection, and evaluation methodology across different data types and domains.",
+    "status": "in-progress",
+    "lead_index": 2,
+    "member_count": 3,
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MACH92"
+  },
+  {
+    "name": "Data Processing Engine",
+    "description": "Covers batch processing operations and feature engineering workflows. Handles data synchronization, cache management, and resolves processing deadlocks in the ML pipeline.",
+    "status": "paused",
+    "lead_index": 0,
+    "member_count": 2,
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MACH41"
+  },
+  {
+    "name": "Content Analysis System",
+    "description": "Manages content processing tasks including duplicate detection and text summarization. Focuses on improving accuracy of content-based features and reducing false positive rates in content matching.",
+    "status": "completed",
+    "lead_index": 1,
+    "member_count": 2,
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MACH39"
+  },
+  {
+    "name": "Citation Processing Tools",
+    "description": "Handles citation network analysis and reference string parsing capabilities. Addresses citation format standardization and improves processing of academic reference data across different citation styles.",
+    "status": "completed",
+    "lead_index": 1,
+    "member_count": 1,
+    "project_name": "Machine Learning Processes",
+    "project_identifier": "MACH14"
+  },
+  {
+    "name": "Storage Optimization",
+    "description": "Focuses on managing storage costs, data compression, and efficient data retention policies. Includes issues related to cold storage optimization, database storage management, and metrics retention configuration.",
+    "status": "backlog",
+    "lead_index": 2,
+    "member_count": 3,
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLOU64"
+  },
+  {
+    "name": "Container Platform Management",
+    "description": "Handles container orchestration, scaling, and cluster health monitoring. Addresses Kubernetes node scaling, MongoDB containerization, and resource allocation challenges across the container ecosystem.",
+    "status": "paused",
+    "lead_index": 0,
+    "member_count": 2,
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLOU51"
+  },
+  {
+    "name": "Network Infrastructure",
+    "description": "Covers network connectivity, routing, and cross-zone communication optimization. Includes service mesh configuration, NAT gateway management, and API connectivity issues between partner institutions.",
+    "status": "paused",
+    "lead_index": 1,
+    "member_count": 3,
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLOU84"
+  },
+  {
+    "name": "Cache Performance",
+    "description": "Manages caching systems and database load optimization. Focuses on Redis cache configuration, eviction policies, and strategies to maintain optimal cache-to-database load balance.",
+    "status": "paused",
+    "lead_index": 1,
+    "member_count": 1,
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLOU51"
+  },
+  {
+    "name": "Deployment Pipeline",
+    "description": "Addresses infrastructure deployment processes and automation tools. Handles Terraform state management, parallel deployment capabilities, and infrastructure as code optimization.",
+    "status": "completed",
+    "lead_index": 0,
+    "member_count": 3,
+    "project_name": "Cloud Infrastructure",
+    "project_identifier": "CLOU74"
+  },
+  {
+    "name": "Accessibility Standards",
+    "description": "Addresses WCAG compliance issues and screen reader compatibility across the application. Focuses on color contrast, aria labels, keyboard navigation and ensuring the interface is usable by people with disabilities.",
+    "status": "completed",
+    "lead_index": 3,
+    "member_count": 1,
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USER38"
+  },
+  {
+    "name": "Touch Interface Controls",
+    "description": "Handles all touch-based interactions and gesture controls on mobile and tablet devices. Includes drag-and-drop functionality, multi-select gestures, and touch-responsive layouts.",
+    "status": "planned",
+    "lead_index": 3,
+    "member_count": 3,
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USER86"
+  },
+  {
+    "name": "Layout Responsiveness",
+    "description": "Manages responsive design implementations and layout stability across different screen sizes and devices. Focuses on preventing layout shifts, optimizing component arrangements, and maintaining consistent spacing.",
+    "status": "paused",
+    "lead_index": 1,
+    "member_count": 1,
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USER15"
+  },
+  {
+    "name": "Document Preview System",
+    "description": "Handles all preview-related features including citation formatting, bibliography styles, and PDF interactions. Covers LaTeX rendering, real-time updates, and document sidebar functionality.",
+    "status": "completed",
+    "lead_index": 0,
+    "member_count": 1,
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USER74"
+  },
+  {
+    "name": "Interactive State Management",
+    "description": "Manages application state handling for interactive elements like modals, focus states, and user selections. Ensures proper state transitions and maintains interface consistency during user interactions.",
+    "status": "planned",
+    "lead_index": 3,
+    "member_count": 1,
+    "project_name": "User Interface and Experience",
+    "project_identifier": "USER87"
+  }
+]

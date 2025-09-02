@@ -1,0 +1,1502 @@
+[
+  {
+    "issue_name": "Inconsistent Author Contribution Metrics Across Research Teams",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the aggregation logic, I found that the contribution percentages aren't being normalized when authors collaborate across multiple departments. The current JOIN in the metrics_calculation.py is double-counting some contributions when an author belongs to more than one research group.</p>"
+  },
+  {
+    "issue_name": "Real-time Analytics Processing Latency Exceeding SLA",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the Kafka consumer groups, I found that our partition rebalancing is taking way too long during peak load. We're seeing message backlogs of 200k+ events because the consumer group coordinator is timing out. Going to try adjusting the heartbeat interval and session timeout configs to see if that helps with the rebalancing issues.</p>"
+  },
+  {
+    "issue_name": "Cross-Referenced Publication Impact Scores Not Syncing",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the sync issues, I found that the Redis cache invalidation isn't properly triggering when impact scores are updated through the bulk import pathway. The cache keys are getting stale because we're bypassing the standard publication update hooks in ImportScoresBatchJob.php. Will need to refactor this to use our standard EventBus pattern.</p>"
+  },
+  {
+    "issue_name": "Funding Analysis Dashboard Memory Optimization",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the dashboard with Chrome DevTools, I found that we're keeping the entire grants dataset in memory instead of implementing pagination. I've started implementing virtual scrolling with react-window to handle large datasets more efficiently and only load visible rows. Should reduce memory usage by ~80%.</p>"
+  },
+  {
+    "issue_name": "Geographic Research Distribution Visualization Bug",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the aggregation logic, I found that the geospatial clustering algorithm is double-counting coordinates when a research paper has multiple institution affiliations. We'll need to modify the groupBy clause in the visualization pipeline to use the primary institution as the anchor point, while still preserving the connection data for the network graph.</p>"
+  },
+  {
+    "issue_name": "Citation Network Graph Rendering Performance Degradation",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the rendering pipeline, I found that the force-directed layout algorithm is recalculating positions for all nodes on every frame, even for static nodes. I'm implementing node position caching and switching to WebGL for rendering which should reduce the computation overhead significantly. Initial tests show rendering time dropped to ~800ms for a 2000-node network.</p>"
+  },
+  {
+    "issue_name": "Batch Analytics Job Queue Overflow During Peak Hours",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the metrics, I found that we're hitting about 85% CPU utilization on our worker nodes during these peak hours. Looks like we need to either increase the worker pool or implement some rate limiting on the institutional API endpoints. I've temporarily increased the queue timeout to 300s as a stopgap measure.</p>"
+  },
+  {
+    "issue_name": "Interdisciplinary Research Score Calculation Error",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the citation weighting module, I found that the normalization factor we're using for cross-discipline citations is applying a 0.7 multiplier instead of the intended 1.2. This explains why papers that bridge multiple fields are getting significantly lower scores. I've prepared a fix but we'll need to rerun the calculations for the past 6 months of data.</p>"
+  },
+  {
+    "issue_name": "Research Trend Prediction Model Accuracy Drift",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the model's performance degradation, I've identified that our feature importance weights are becoming stale due to rapid shifts in research publication patterns post-COVID. We should implement a sliding window approach for our training data, focusing on the last 18 months rather than the full 5-year historical dataset.</p>"
+  },
+  {
+    "issue_name": "Peer Review Analytics Dashboard Time-out Issues",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the dashboard's performance, I found that the timeout issues are stemming from unoptimized SQL queries when aggregating reviewer statistics. The query for calculating average review times is particularly problematic - it's doing a full table scan on the submissions table without proper indexing. I'll implement query optimization and add appropriate indexes to improve response time.</p>"
+  },
+  {
+    "issue_name": "Institution Collaboration Network Data Inconsistency",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the logs, I found the root cause - our institution matching algorithm is using an outdated ISO 3166 country code mapping for some regions. This is causing mismatches particularly with institutions from recently changed territories and some Asian countries. Need to update our reference data and rerun the last 3 months of partnership analytics.</p>"
+  },
+  {
+    "issue_name": "API Rate Limiting Affecting External Analytics Integration",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the logs, I found that we're hitting the rate limits during peak hours (11AM-2PM EST) when most universities run their daily syncs. I'm implementing a queuing system with exponential backoff that should help distribute the requests more evenly. Will have a PR ready for review by EOD.</p>"
+  },
+  {
+    "issue_name": "Open Access Impact Metrics Calculation Bug",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After reviewing the citation aggregation logic, I found that we're counting both DOI and URL-based citations as unique entries even when they point to the same paper. I've added logging to track the duplicate entries and it looks like this primarily affects papers that are hosted on multiple repositories.</p>"
+  },
+  {
+    "issue_name": "Historical Data Migration Script Timeout for Legacy Metrics",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've implemented chunked processing for the migration script with a 100MB batch size and added checkpointing after each chunk. Initial tests show better performance, but we'll need to validate this doesn't impact data consistency. @Sarah, could you review the changes in PR #4523?</p>"
+  },
+  {
+    "issue_name": "Elasticsearch Query Optimization for Multi-Field Author Analytics",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the query patterns, I found we can significantly reduce CPU load by implementing composite aggregations and adding a terms-level cache. Initial tests show response times dropping from 10s to ~2.5s with these optimizations. I'll share the PR with benchmark results once I finish implementing the changes.</p>"
+  },
+  {
+    "issue_name": "Kafka Stream Processing Delay in Research Topic Trend Analysis",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the Kafka consumer group, I found that the lag is happening due to message batching configuration being too conservative. Current batch.size is set to 16KB which is causing unnecessary micro-batches. I'm testing with 64KB batch size and reducing linger.ms from 100ms to 50ms to optimize throughput.</p>"
+  },
+  {
+    "issue_name": "Redis Cache Invalidation Issues for Aggregated Citation Metrics",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the Redis cluster logs, I found that the cache invalidation is failing silently when we get concurrent updates to the same citation record. We should implement a distributed lock using SETNX before updating cache entries to prevent this race condition. I can pair with someone on this if needed.</p>"
+  },
+  {
+    "issue_name": "Memory Leak in Python Data Processing Worker for Journal Rankings",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling with memory_profiler, I found that we're not properly closing file handles in the journal_metrics_processor.py module. The DataFrames from previously processed journals are staying in memory because we're keeping references to them in the ranking_cache dictionary. Going to implement a LRU cache with a max size of 1000 entries to prevent unbounded growth.</p>"
+  },
+  {
+    "issue_name": "PDF Analytics Parser Failing for Non-Latin Character Sets",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the parser logs, I found that we're using the default PDFBox encoding settings without proper UTF-8 support for CJK characters. We'll need to update the PDF text extraction module to handle Unicode codepoints above U+4E00. I've started working on implementing ICU4J for better character recognition.</p>"
+  },
+  {
+    "issue_name": "Concurrent Access Deadlock in Funding Analytics Module",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the execution plans, I found that we're not properly handling row-level locking in the funding_impact_calculations table. We should implement optimistic locking with version numbers and add retry logic for concurrent updates to prevent the deadlocks. I've created a POC branch with the changes if anyone wants to review.</p>"
+  },
+  {
+    "issue_name": "Time Series Aggregation Bug in Research Output Metrics",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the aggregation logic, I found that we're not properly normalizing timestamps to UTC before doing the weekly/monthly rollups. The current implementation is using the application server's local timezone, which explains why we're seeing edge cases around month boundaries. I'll implement a fix using moment.js to ensure consistent timezone handling across all aggregation operations.</p>"
+  },
+  {
+    "issue_name": "Author Contribution Weight Calculation Discrepancy",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the weighting algorithm, I found that the normalization factor isn't properly handling cases where authors have multiple institutional affiliations. The current implementation is treating each institution as a separate weight multiplier instead of distributing the author's contribution across their affiliated institutions proportionally.</p>"
+  },
+  {
+    "issue_name": "Real-time Analytics Websocket Connection Instability",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After some investigation, I found that our websocket heartbeat interval is set too high at 30s. Most browsers have a default timeout of 20s, which explains the 15-minute disconnection pattern (roughly 30 reconnection attempts). I'd recommend reducing the heartbeat to 10s and implementing an exponential backoff strategy for reconnections.</p>"
+  },
+  {
+    "issue_name": "Preprint Version Analytics Correlation Bug",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the correlation issues, I found that the root cause is in how we're handling DOI matching between preprint versions. The system is using exact matches only, but we need fuzzy matching since some publishers modify the DOI syntax slightly when moving from preprint to final publication. I've started implementing a Levenshtein distance algorithm to catch these edge cases.</p>"
+  },
+  {
+    "issue_name": "Machine Learning Model Drift in Research Topic Classification",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the model's confusion matrix, I found that the accuracy drop is mainly due to misclassification of papers in emerging AI/ML and quantum computing domains. The model seems to be struggling with newer terminology that wasn't present in our original training data from 2022. I suggest we retrain with a fresh dataset and possibly add a monthly retraining pipeline.</p>"
+  },
+  {
+    "issue_name": "Custom Analytics Export Job Memory Optimization",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the main memory bottleneck - we're loading the entire result set into memory before streaming to S3. We can reduce the memory footprint by implementing batch processing with a cursor-based approach, processing ~50k rows at a time. I'll push up a PR with the changes tomorrow.</p>"
+  },
+  {
+    "issue_name": "Funding Source Impact Analysis Pipeline Timeout",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the timeout issue to the recursive relationship mapping in the funding source analyzer. The nested queries for multi-tiered grants are taking exponentially longer when processing datasets over 50k records. I'd recommend we implement batch processing with a cursor-based approach to handle the larger databases.</p>"
+  },
+  {
+    "issue_name": "Data Sampling Bias in Geographic Research Distribution Analysis",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the collection timestamps, I found that our data ingestion jobs are running primarily during US/EU business hours (UTC-8 to UTC+2). I suggest implementing a distributed collector system with nodes in Singapore and Sydney to ensure balanced coverage of APAC research activities. This should help normalize our sampling across all time zones.</p>"
+  },
+  {
+    "issue_name": "Cross-Reference Resolution Latency in Co-Author Network Analysis",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified that the performance bottleneck is coming from our recursive graph traversal when resolving multi-institution authors. We can optimize this by implementing edge caching and batch processing the affiliation lookups in chunks of 250 nodes. Already have a PR ready with initial benchmarks showing query time reduced to ~8s for a 1200-node network.</p>"
+  },
+  {
+    "issue_name": "Inconsistent DOI Resolution in Citation Impact Metrics",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the DOI resolution issue to the URL encoding function - it's not properly handling UTF-8 characters in CrossRef API responses. We'll need to update the citation parser to use the proper encoding library and add better error handling for non-standard repository formats.</p>"
+  },
+  {
+    "issue_name": "Batch Processing Failure for Large-Scale Altmetrics Updates",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the Spark jobs, I found that we're hitting OOM errors during the aggregation phase because we're trying to cache too much social media data in memory. I'm testing a fix that implements windowed processing with a 50GB partition size - initial tests show much better memory utilization but adds about 15 minutes to the total processing time.</p>"
+  },
+  {
+    "issue_name": "Peer Review Time Analytics Calculation Error",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the codebase, I found that the DateTimeCalculator class in the analytics module isn't using the WorkingDaysCalculator utility to exclude non-working days. I've created a PR that integrates the existing holiday calendar service and applies the proper business day logic. This should resolve the inflated metrics we're seeing in the APAC region.</p>"
+  },
+  {
+    "issue_name": "Research Grant Success Rate Analytics Data Inconsistency",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the data pipeline, I found that collaborative grants with multiple PIs are being counted multiple times in the individual metrics but only once in the institutional rollup. We'll need to modify the aggregation logic in the GrantMetricsProcessor class to properly handle these edge cases and add a new column to track grant sharing weights.</p>"
+  },
+  {
+    "issue_name": "API Rate Limiting Issues in Real-time Metrics Dashboard",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the logs, I found that we're hitting the rate limits primarily because we're making individual API calls for each metric instead of batching them. I'm working on implementing a request queue with exponential backoff and combining related metrics into single requests. Should reduce our API calls by ~60%.</p>"
+  },
+  {
+    "issue_name": "Keyword Extraction Accuracy for Non-English Research Papers",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the tokenization patterns, I found that our current morphological segmentation approach doesn't handle CJK characters properly. We might need to integrate MeCab for Japanese and Jieba for Chinese texts to improve the baseline accuracy. I've created a POC branch that shows ~12% accuracy improvement on a test set of 100 papers.</p>"
+  },
+  {
+    "issue_name": "Inconsistent Session Duration Metrics for PDF Reader Analytics",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue to the sessionStorage handling - we're not properly merging the time spent metrics when users switch between PDFs. The analytics tracker creates a new session ID for each document load instead of maintaining the parent session. Will need to refactor the trackDocumentView() method to use a shared session identifier.</p>"
+  },
+  {
+    "issue_name": "Data Pipeline Latency in Institution-Level Collaboration Metrics",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the pipeline execution, I found that the bottleneck is in the graph traversal logic for identifying cross-institution collaborations. The current implementation is using nested loops instead of proper graph indexing, causing O(n²) complexity. I'm working on implementing a Neo4j-based solution that should bring this down to minutes rather than hours.</p>"
+  },
+  {
+    "issue_name": "Visualization Rendering Issues for Large Dataset Scatter Plots",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've implemented a basic data sampling algorithm that reduces points to ~10k while maintaining statistical significance. Initial tests show render time improved by 85%, but we should discuss if the sampling rate needs to be configurable based on client hardware capabilities.</p>"
+  },
+  {
+    "issue_name": "Anomaly Detection False Positives in Download Pattern Analysis",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've been analyzing the alert logs from the past month, and it looks like our baseline thresholds don't account for cyclical academic patterns. During the last ML conference week, we got 47 false positives just from researchers batch-downloading papers. We should probably implement time-based threshold adjustments or factor in known conference schedules.</p>"
+  },
+  {
+    "issue_name": "Incomplete Data Capture for Mobile App Usage Analytics",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the analytics pipeline, I found that the Firebase Analytics SDK isn't properly handling the offline data queue. We should implement a local SQLite buffer to store events when offline, then batch sync them when connectivity is restored. This should help catch those missing offline reading sessions.</p>"
+  },
+  {
+    "issue_name": "Redis Cache Invalidation Issues in Real-time Analytics Dashboard",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the cache invalidation issue, I found that we're not properly handling the pub/sub events when analytics data gets updated. I've created a PR that implements a more robust cache invalidation strategy using Redis keyspace notifications. This should ensure the cache gets cleared immediately when underlying data changes.</p>"
+  },
+  {
+    "issue_name": "Elasticsearch Query Timeout for Complex Research Impact Metrics",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the query patterns, I found we can improve performance by implementing scroll API for large result sets and breaking down the aggregations into smaller chunks. I've created a POC that reduces the average query time from 45s to 12s by implementing these changes along with some strategic index optimization.</p>"
+  },
+  {
+    "issue_name": "Incorrect Aggregation of Multi-Language Research Tag Analytics",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've started looking into the language normalization logic - seems like we need to implement a mapping table that connects equivalent research tags across languages (e.g., \"machine learning\" = \"机器学习\" = \"apprentissage automatique\"). We could use the existing language detection service to group these during the aggregation process.</p>"
+  },
+  {
+    "issue_name": "Incorrect Aggregation of Cross-Institution Research Collaboration Metrics",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the aggregation logic, I found that the JOIN operation between the institutional_collaborations and research_projects tables is using an INNER JOIN instead of a LEFT JOIN, which explains the undercounting. I'll push a fix for this today and add unit tests to verify the counts match our expected collaboration patterns.</p>"
+  },
+  {
+    "issue_name": "Time Series Visualization Breaks for Long-Term Citation Trend Analysis",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Took a look at the D3.js time series component - looks like we're hitting a memory limit when trying to render more than ~2000 data points. We might need to implement data downsampling for longer time ranges or switch to a more efficient visualization library like Apache ECharts that handles large datasets better.</p>"
+  },
+  {
+    "issue_name": "Memory Overflow in Geographic Research Distribution Heat Map",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the root cause - we're keeping the entire dataset in memory while rendering the WebGL heat map tiles. We should implement data streaming and progressive loading to process chunks of 10k points at a time. This should resolve the memory issues while maintaining visualization performance.</p>"
+  },
+  {
+    "issue_name": "Funding Source Attribution Analytics Missing Private Sector Grants",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the ETL pipeline, I found that we're not parsing the XML metadata from private grant submissions correctly. The schema mapping for industry partner identifiers is missing the 'funding_category' attribute, which is why these grants aren't being tagged properly in the attribution engine.</p>"
+  },
+  {
+    "issue_name": "Research Topic Clustering Algorithm Performance Degradation",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the clustering algorithm, I found that the cosine similarity calculations are taking exponentially longer when papers have tags from multiple domains. The current implementation is doing O(n²) comparisons across all topic vectors - we should consider using LSH (Locality-Sensitive Hashing) to reduce the computational complexity.</p>"
+  },
+  {
+    "issue_name": "Preprint Version Impact Metrics Not Updating After Publication",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the synchronization logic, I found that the DOI matching between preprints and published versions is failing silently when the publisher uses different citation formats. I'll need to update our CrossRef API integration to handle multiple DOI patterns and implement a more robust fallback mechanism.</p>"
+  },
+  {
+    "issue_name": "Open Access Compliance Tracking Analytics System Timeout",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the analytics pipeline, I found the bottleneck is in the publication metadata aggregation query. It's doing a full table scan instead of using the institution_id index. I'll implement query optimization and add database partitioning by institution size to handle these larger datasets more efficiently.</p>"
+  },
+  {
+    "issue_name": "GPU Memory Leaks in Transformer Training Pipeline",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling with `nvidia-smi` and PyTorch memory debugger, I found that the attention cache isn't being properly cleared between forward passes. We're accumulating residual tensors in the cross-attention layers that aren't getting garbage collected. Adding explicit tensor.detach() and del statements after each attention computation reduced the memory growth by ~80%.</p>"
+  },
+  {
+    "issue_name": "Cross-validation Failures in Multi-modal Classification",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the validation splits, I found that we're not properly stratifying across both image and text modalities. The current DataLoader is maintaining class balance for images but ignoring the text distribution, which explains the high variance between folds. I'll update the sampling strategy to account for both modalities.</p>"
+  },
+  {
+    "issue_name": "Embeddings Cache Synchronization Error",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the logs, I found that the Redis pub/sub events aren't reaching all worker nodes consistently. Looks like we have a network partition issue between the us-east-1b and us-east-1c AZs that's causing the cache invalidation messages to drop. I'm implementing a message retry mechanism with exponential backoff to handle the intermittent connectivity issues.</p>"
+  },
+  {
+    "issue_name": "False Positives in Duplicate Content Detection",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the flagged duplicates, I found that reducing the cosine similarity threshold from 0.85 to 0.75 and adding contextual weighting for methodology-specific terms drops the false positive rate to 8.2%. We'll need to run more validation tests, but initial results look promising.</p>"
+  },
+  {
+    "issue_name": "Batch Processing Deadlocks in Feature Engineering",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the deadlocks, I found that we're not properly handling mutex locks when the embedding model is processing batches larger than 10k documents. I've added a semaphore to control the concurrent access to the tokenizer pool and implemented exponential backoff for retry attempts. @Sarah can you review the PR #4532 when you have a chance?</p>"
+  },
+  {
+    "issue_name": "Attention Layer Performance Degradation in Citation Network Analysis",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the attention layer, I found that the self-attention computation scales quadratically with the number of nodes, causing memory bottlenecks. We might need to implement sparse attention patterns or graph partitioning to handle the larger citation networks more efficiently.</p>"
+  },
+  {
+    "issue_name": "Token Length Inconsistencies in Abstract Summarization",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've implemented a token windowing approach that forces outputs within ±10% of target length. Initial tests show better consistency, but we're still seeing some edge cases where the model ignores the constraints when input complexity is high. Will push PR for review once I finish the edge case handling.</p>"
+  },
+  {
+    "issue_name": "Methodology Classification Bias for Interdisciplinary Papers",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the classification patterns, I've found that our current model weights are heavily skewed towards primary methodologies (confidence > 0.85) while secondary approaches rarely exceed 0.3 confidence. I suggest we adjust the attention mechanism to better capture methodological intersections, particularly in the social sciences and computational biology papers where this bias is most pronounced.</p>"
+  },
+  {
+    "issue_name": "Reference String Parsing Failures for Non-Standard Citations",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the failed cases, I found that many pre-1990 papers use semicolons instead of commas between author names, and often have non-standard journal abbreviations. I'm modifying the regex patterns to handle these edge cases, but we might need to build a mapping table for historical journal naming conventions.</p>"
+  },
+  {
+    "issue_name": "Gradient Instability in Multi-Task Research Topic Classifier",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the gradient instability, I found that the loss scaling between tasks was causing the issue. The classifier for biology topics was dominating the gradients, causing other task branches to receive minimal updates. I'm implementing gradient normalization with a temperature parameter to balance the task-specific losses.</p>"
+  },
+  {
+    "issue_name": "Temporal Coherence Issues in Research Trend Analysis",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the temporal boundary issue, I found that our sliding window approach for topic evolution tracking isn't properly handling the December-January transitions. I think we need to implement a smoothing function at year boundaries and adjust our sequential pattern mining algorithm to consider a 3-month overlap period rather than strict calendar year segmentation.</p>"
+  },
+  {
+    "issue_name": "Dataset Contamination in Cross-References Validation",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've analyzed the validation set contamination and traced it to the data preprocessing pipeline from our June import. Looks like duplicate entries were created when merging the bibliographic databases due to inconsistent ID normalization. I'll work on a script to identify and remove the affected samples.</p>"
+  },
+  {
+    "issue_name": "Inference Latency Spikes in Figure Caption Generation",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the inference pipeline, I found that the bottleneck is in the attention mechanism when processing multi-panel figures - the self-attention computation scales quadratically with the number of detected subplots. I'm testing a sliding window attention approach that should help reduce the complexity.</p>"
+  },
+  {
+    "issue_name": "Vector Quantization Errors in Knowledge Graph Embeddings",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the quantization errors, I found that our current 8-bit quantization scheme is too aggressive for the complex relationship tensors. Recommend switching to 16-bit fixed-point quantization with a learned scaling factor - initial tests show this reduces the average error from 12.3% to 3.8% while only increasing the model size by 1.4x.</p>"
+  },
+  {
+    "issue_name": "Sequence Length Optimization Failures in Method Section Analysis",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the logs, I found that the truncation failure occurs when papers contain nested methodology subsections exceeding 2500 tokens. The current regex pattern doesn't properly handle these edge cases, leading to abrupt cuts mid-section. I'm working on a modified chunking algorithm that preserves section hierarchy while maintaining content integrity.</p>"
+  },
+  {
+    "issue_name": "Author Disambiguation Model Degradation for Non-Latin Names",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the logs, I found that our current Levenshtein distance thresholds are too aggressive for CJK names. We should consider implementing language-specific normalization rules and adjusting the similarity thresholds based on the detected script type. I've started working on a POC using the updated ICU4J library for better Unicode handling.</p>"
+  },
+  {
+    "issue_name": "Zero-Shot Classification Failures for Emerging Research Fields",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the misclassifications, I've found that our current embeddings are heavily biased towards traditional ML papers from 2015-2019. We should retrain the model using more recent quantum computing papers from arXiv (especially quant-ph) and update our tokenizer to better handle domain-specific terminology like 'qubits' and 'quantum supremacy'.</p>"
+  },
+  {
+    "issue_name": "Mathematical Formula Extraction Errors in PDF Preprocessing",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the issue, it looks like our LaTeX parser is breaking on nested fraction expressions and complex matrix notation. I've identified a potential fix using MathJax's preprocessing API to handle the tokenization before we feed it into our main extraction pipeline. Will need to refactor the PDFMathExtractor class to accommodate this change.</p>"
+  },
+  {
+    "issue_name": "Checkpoint Restoration Failures in Distributed Training",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After debugging, I found that the checkpoint failures occur when the AllReduce operation hasn't completed before the save attempt. Adding a barrier sync before checkpoint saves seems to help, but we should probably implement a proper distributed locking mechanism for more reliability. Testing this fix on a 4-node setup now.</p>"
+  },
+  {
+    "issue_name": "Attention Mechanism Collapse for Multi-Language Code Snippets",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the attention collapse, I found that the tokenizer is treating code block delimiters inconsistently between languages. The transformer's positional encoding gets misaligned when encountering mixed R/Python blocks, especially when they share similar syntactic patterns. I'm working on a patch to modify the attention mask handling for multi-language sequences.</p>"
+  },
+  {
+    "issue_name": "Citation Graph Embedding Instability for Preprint Updates",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the embedding instability, I found that the problem stems from our current graph attention mechanism not properly handling version transitions. We're currently reinitializing node embeddings on each preprint update without maintaining temporal consistency of the neighborhood relationships. I suggest implementing a version-aware embedding update strategy that preserves historical citation context.</p>"
+  },
+  {
+    "issue_name": "Memory Leaks in Batch Inference Pipeline for Document Clustering",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling with memory_profiler, I found that we're not properly clearing the embedding cache between batch runs. The LRU cache implementation is holding onto references even after the documents are processed. I've pushed a PR that implements proper cache invalidation and adds monitoring hooks - seeing ~40% reduction in memory usage in initial tests.</p>"
+  },
+  {
+    "issue_name": "Inconsistent Feature Attribution Scores for Domain-Specific Terminology",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the variance, I found that our feature importance pipeline isn't properly handling sparse tensors for rare domain terms. The SHAP values are being calculated on the dense representation, which introduces noise when the term frequency is low. We should refactor the explainer to use SparseShap implementation instead.</p>"
+  },
+  {
+    "issue_name": "Data Pipeline Stalls During Multi-Modal Feature Extraction",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the bottleneck - the image processor thread is holding a lock on the shared feature buffer while waiting for OCR completion, causing the text pipeline to stall. Going to implement a non-blocking queue system to decouple the modalities and allow parallel processing. Should improve throughput by ~40% based on initial profiling.</p>"
+  },
+  {
+    "issue_name": "Batch Normalization Statistics Drift in Transfer Learning Setup",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the BN stats drift, I found that we're not properly accumulating running statistics during the fine-tuning phase. We should switch to using momentum-based updates for the running mean/variance and potentially implement domain-specific normalization for the smaller target domains. I've started working on a fix in branch feature/bn-momentum-fix.</p>"
+  },
+  {
+    "issue_name": "Curriculum Learning Scheduler Fails for Hierarchical Document Classification",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the scheduler implementation, I found that the complexity scoring function isn't properly accounting for the hierarchical relationships between labels. The current heuristic only looks at individual label complexity scores in isolation, but we need to consider the full path from root to leaf nodes when calculating example difficulty.</p>"
+  },
+  {
+    "issue_name": "Cross-Validation Fold Contamination in Sequential Paper Processing",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the cross-validation issue, I found we need to track paper version IDs and ensure all versions of the same paper stay within a single fold. I've started implementing a custom GroupKFold strategy that maintains document lineage integrity - will share the PR once the initial tests are passing.</p>"
+  },
+  {
+    "issue_name": "Transformer Attention Sparsity Pattern Degradation",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the attention patterns across training epochs, I've identified that the sparsity degradation starts around epoch 50, particularly when sequence lengths exceed 2048 tokens. I'm testing a modified pruning schedule that gradually increases the temperature parameter to maintain the desired sparsity levels. Will share results once the current training run completes.</p>"
+  },
+  {
+    "issue_name": "Gradient Accumulation Errors in Distributed Training of Citation Network Model",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the gradient accumulation issue, I found that we're getting memory leaks when accumulating gradients across multiple GPUs with large citation graphs (>1M nodes). The problem seems to be in our all_reduce() implementation - we're not properly synchronizing between accumulation steps. I've added some debugging prints and the memory usage spikes significantly after about 100 batches.</p>"
+  },
+  {
+    "issue_name": "Token Vocabulary Saturation in Multilingual Abstract Processing",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the token distribution patterns, I've identified that most OOV tokens are coming from emerging biotech and quantum computing papers. I suggest we expand the vocabulary by ~15K tokens, focusing on these domains, and implement subword tokenization for rare technical terms. Will need about 48 hours of GPU time for retraining.</p>"
+  },
+  {
+    "issue_name": "Temporal Coherence Loss in Long-Term Citation Prediction",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've analyzed the temporal embeddings and found that our attention mechanism isn't properly capturing the evolution of citation patterns across different research epochs. We might need to implement time-aware attention layers similar to what was used in the T-BERT architecture to better model the temporal dynamics.</p>"
+  },
+  {
+    "issue_name": "Figure-Text Alignment Errors in Multi-Column Layout Analysis",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the training data, I found that our caption matching failures mostly occur when figures span multiple columns or when supplementary figures are referenced out of order. I'm implementing a new spatial relationship algorithm that considers both the relative positioning and contextual references in the text. Initial tests on a small dataset show promising improvements, pushing accuracy to around 87%.</p>"
+  },
+  {
+    "issue_name": "Abstract Generation Hallucination for Low-Resource Topics",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've implemented a domain-specific regularization layer that reduced hallucination rate to 17% on our test set, but we're still seeing issues with papers discussing quantum computing and biosynthetics. The model seems to conflate concepts from more common ML papers when generating abstracts for these domains.</p>"
+  },
+  {
+    "issue_name": "Semantic Drift in Incremental Model Updates for Topic Classification",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the update cycles, I found that the semantic drift is most pronounced when we have high-entropy embeddings in the incremental batches. We might need to implement a consistency regularizer that penalizes large shifts in the semantic space between updates. I've started prototyping this using cosine similarity constraints between old and new embeddings.</p>"
+  },
+  {
+    "issue_name": "Dataset Contamination from Preprint-Publication Pairs",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've written a script to identify potential preprint-publication pairs using DOI cross-referencing and cosine similarity of abstracts. Initial run shows we might have caught about 85% of the problematic pairs, but there are some edge cases where papers have significant revisions between versions that we'll need to handle carefully. Running full corpus analysis now - will update with complete results in ~4 hours.</p>"
+  },
+  {
+    "issue_name": "Sequence Length Truncation Causing Information Loss in Methods Section",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've implemented a sliding window approach that processes longer methods sections in chunks while maintaining context between segments. Initial tests show we can now handle protocols up to 4x longer without truncation, but we'll need to validate that the semantic relationships are preserved across chunk boundaries.</p>"
+  },
+  {
+    "issue_name": "Performance Degradation in Cross-Language Reference Matching",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the embedding vectors, I found that the BERT model we're using isn't properly handling CJK characters during the cross-lingual alignment phase. We might need to switch to XLM-RoBERTa or implement language-specific preprocessing to improve the vector space consistency.</p>"
+  },
+  {
+    "issue_name": "GPU Memory Spikes During Multi-Modal Table Processing",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've been looking into this and found that our batch normalization layer is creating unnecessary tensor copies during the mixed data processing. We can probably reduce memory usage by ~40% by implementing gradient checkpointing and breaking up the larger tables into smaller chunks during the initial parse. I'll put together a PR with these changes tomorrow.</p>"
+  },
+  {
+    "issue_name": "Confidence Score Calibration Drift for Novel Research Topics",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the confidence drift patterns, I found that the model's overconfidence is most pronounced for papers published in the last 6-12 months. I've started implementing temperature scaling for calibration, but we might need to consider either more frequent retraining or a dynamic calibration approach for emerging topics.</p>"
+  },
+  {
+    "issue_name": "Equation Tokenization Errors in LaTeX-to-Text Conversion",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the tokenization pipeline, I found that our regex pattern for detecting equation delimiters (\\[ and \\]) is breaking when there are nested environments inside display math mode. I'm working on a fix that uses a proper parser stack instead of regex matching.</p>"
+  },
+  {
+    "issue_name": "Data Augmentation Artifacts in Supplementary Material Processing",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the augmentation pipeline, I found that the artifacts are primarily occurring during the multi-scale transformation step when processing supplementary PDFs with complex tables. I've added some debug logging and noticed that our normalization function is treating some table borders as significant features.</p>"
+  },
+  {
+    "issue_name": "Batch Normalization Statistics Skew in Incremental Training",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the batch norm stats drift, I found that our running means are being updated too aggressively when processing new document batches. I'm testing a fix where we decrease the momentum parameter from 0.1 to 0.01 to make the statistics more stable across incremental updates.</p>"
+  },
+  {
+    "issue_name": "Memory Leak in Dynamic Knowledge Graph Updates",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Found a potential source of the leak - we're not properly clearing the autograd computation graph between update cycles. The tensors from previous operations are still being held in memory even after the forward pass is complete. Will try implementing explicit graph.detach() calls at key points.</p>"
+  },
+  {
+    "issue_name": "Checkpoint Corruption in Multi-GPU Training of Citation Parser",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the logs, I found that the corruption seems to happen when gradient accumulation steps don't align perfectly across GPUs during checkpoint saving. Adding a synchronization barrier before save_pretrained() helped in my local tests. Will push the fix to the checkpoint_utils.py file once I verify it works consistently on the full training run.</p>"
+  },
+  {
+    "issue_name": "Methodology Section Classifier Bias Towards Specific Disciplines",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the training data distribution, I found the model was trained on a corpus that's ~78% STEM papers vs only 22% humanities/social sciences. We should rebalance the training dataset to achieve more equitable discipline coverage. I can prepare a sampling strategy doc for review.</p>"
+  },
+  {
+    "issue_name": "Feature Attribution Instability in Research Trend Detection",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the SHAP value instability, I found that our feature sampling method during the explanation generation is contributing to the variance. We should consider using a fixed random seed for the SHAP kernel explainer and increasing the number of background samples from 100 to at least 500 to get more consistent attributions.</p>"
+  },
+  {
+    "issue_name": "Inconsistent Tokenization of Chemical Formulas and Mathematical Notation",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the tokenization patterns, I found that the main issue occurs with subscript numbers in chemical formulas (like H2O) and superscript notation in math equations. I'm proposing we implement a pre-tokenization step using regex patterns to preserve these special notations before they hit the main tokenizer. @Sarah, could you review my proposed patterns in the PR?</p>"
+  },
+  {
+    "issue_name": "Positional Encoding Overflow in Extra-Long Research Papers",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've been investigating the position encoding limitations and found that we can implement a sliding window approach to handle the longer sequences. The idea is to process the paper in overlapping chunks of 4096 tokens, then stitch the embeddings back together with a custom attention mask. Will need to modify the encoder architecture but should work for papers up to ~500 pages.</p>"
+  },
+  {
+    "issue_name": "Attention Layer Saturation During Multi-Document Synthesis",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the attention mechanism, I found that we're hitting memory limits at around 45-50 papers due to the quadratic scaling of self-attention. Might need to implement sparse attention patterns or sliding window attention to handle larger document sets. Currently testing with Longformer-style attention as a potential solution.</p>"
+  },
+  {
+    "issue_name": "Temporal Coherence Loss in Sequential Abstract Processing",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating further, I found that our citation graph embeddings aren't properly accounting for publication dates when calculating temporal distances between papers. We'll need to modify the coherence loss function to include a time-weighted component that penalizes inconsistent methodological transitions.</p>"
+  },
+  {
+    "issue_name": "Intermittent database connection timeouts in containerized MongoDB cluster",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the logs, I found that the connection timeouts spike when we hit around 2000 concurrent connections during data ingestion. We might need to adjust our MongoDB connection pool settings and review the network policies between the K8s nodes. I've temporarily increased the maxPoolSize to 2500 to see if it helps.</p>"
+  },
+  {
+    "issue_name": "Excessive cold storage costs from uncompressed research datasets",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've done an initial analysis of our storage patterns - looks like we're storing about 8TB of raw genomics data that could be compressed with GZIP to save roughly 60-70% space. I'll create a proof of concept pipeline using AWS Lambda to automatically compress files before they hit Glacier storage.</p>"
+  },
+  {
+    "issue_name": "Service mesh latency spikes during cross-zone traffic routing",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the Istio metrics, I found that our mTLS certificate rotation is causing temporary connection resets between zones. The latency spikes correlate perfectly with the cert rotation windows. Going to test increasing the rotation period from 24h to 48h to reduce the frequency of these events.</p>"
+  },
+  {
+    "issue_name": "Terraform state lock contention blocking parallel deployments",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, I found that our Jenkins agents aren't properly cleaning up Terraform state locks when jobs fail unexpectedly. I've created a PR that adds a post-build cleanup step using force-unlock, but we should probably look into migrating to S3+DynamoDB backend for better locking mechanisms. @DevOps team - thoughts on this approach?</p>"
+  },
+  {
+    "issue_name": "Redis cache eviction spike causing increased database load",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the metrics, I found that we're storing too many large query result sets with high TTLs. Recommend adjusting maxmemory-policy to volatile-lru and reducing TTL on research queries from 1 hour to 15 minutes as an immediate mitigation. Will monitor eviction rates after these changes.</p>"
+  },
+  {
+    "issue_name": "Kubernetes node autoscaling delay causing research job queue backlog",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've been digging into the Cluster Autoscaler logs and noticed the delay seems to be related to the --scale-down-delay-after-add parameter being set too high (10m). Adjusting this to 5m and tweaking --scale-up-unneeded-time to 3m might help reduce the node provisioning latency without compromising stability.</p>"
+  },
+  {
+    "issue_name": "ElasticSearch cluster showing uneven shard distribution",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the cluster metrics, I found that our replica configuration isn't optimal for our current node count. Seeing 3 nodes with 75% heap usage while others are sitting at 30%. I'm going to adjust the allocation awareness settings and force a rebalance to get a more even distribution.</p>"
+  },
+  {
+    "issue_name": "Cloud NAT gateway IP exhaustion during citation API synchronization",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the logs, I found that we're hitting around 85% NAT IP utilization during the 3PM EST citation sync job. We should probably increase the minimum number of IP addresses from 8 to 16 and adjust the connection timeouts to prevent address exhaustion. I'll prepare a terraform change for review.</p>"
+  },
+  {
+    "issue_name": "Prometheus metrics retention policy causing storage volume saturation",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the metrics growth rate, I'm recommending we adjust the retention period to 90 days for high-cardinality metrics and 180 days for aggregated data. This should reduce our storage requirements by ~65% while still maintaining sufficient historical data for the research teams. I've created a PR with the updated prometheus.yml configuration if anyone wants to review.</p>"
+  },
+  {
+    "issue_name": "CORS configuration blocking legitimate API requests from partner institutions",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After reviewing the CORS policy, I've identified that we need to update the allowed-origins list to include the .edu domain patterns. I'm thinking we should implement a whitelist approach with wildcard subdomains for verified partner institutions rather than blanket .edu access. Will prepare a PR with the changes and updated security documentation.</p>"
+  },
+  {
+    "issue_name": "Insufficient pod disruption budgets causing service instability during node updates",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've reviewed our current PDB settings across the cluster and found that most services are missing minAvailable configurations. We should probably set this to at least 70% for critical services and 50% for non-critical ones. I can draft a PR with the changes if everyone agrees with these thresholds.</p>"
+  },
+  {
+    "issue_name": "Log aggregation pipeline dropping events during traffic spikes",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified that our current Fluentd buffer settings are too aggressive - we're flushing to ES every 5s with a queue limit of 1000 events. Proposing to increase the buffer_queue_limit to 8000 and adjust flush_interval to 10s to handle the spikes better. Will need to test this under load though.</p>"
+  },
+  {
+    "issue_name": "Identity provider federation timeout affecting multi-institution SSO logins",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the logs, I found that our SAML timeout is set to 30s which is too aggressive for some slower IdP responses. Recommend increasing to 60s and implementing connection pooling to handle the peak load better. Will need to coordinate with the infrastructure team to make these changes.</p>"
+  },
+  {
+    "issue_name": "S3 lifecycle policies failing to transition archived papers to Glacier storage",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the CloudWatch logs, I found that the IAM role we're using for the lifecycle policies is missing the s3:ObjectTransition permission. The new security hardening from last sprint appears to have inadvertently removed this. I'll draft a patch to update the role permissions while maintaining the principle of least privilege.</p>"
+  },
+  {
+    "issue_name": "Network policy misconfiguration blocking inter-service communication in citation processor",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Found the root cause - the networkPolicy spec in the citation-processor namespace had an incorrect podSelector that was blocking all egress traffic to the metadata-extractor service. I've updated the policy to allow traffic on port 8443 between these services and verified connectivity is restored. @DevOps team - can you review the updated policy in PR #847?</p>"
+  },
+  {
+    "issue_name": "CloudFront origin shield not properly caching large dataset downloads",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the CloudFront logs, I found that the Cache-Control headers from the origin are inconsistent for files >5GB. The origin's nginx config has a different caching policy for large files that's overriding our CloudFront settings. Will update the nginx config to standardize the caching behavior across all file sizes.</p>"
+  },
+  {
+    "issue_name": "Vault auto-unsealing failing after KMS key rotation",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, it seems the root cause is that our Vault config isn't properly handling the KMS key version updates. We need to modify the auto-unseal stanza to use the key_id instead of key_version parameter and implement proper key rotation hooks. I've started working on a fix in the terraform configs.</p>"
+  },
+  {
+    "issue_name": "EKS worker nodes OOMKilling annotation processing pods",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the OOMKill events, I've identified that we're consistently hitting 85%+ memory utilization during peak annotation loads around 2-3pm EST. Suggesting we either implement horizontal pod autoscaling with lower resource limits per pod or look into upgrading to the new r6i.4xlarge instance types that were just released, though that would impact our infrastructure costs.</p>"
+  },
+  {
+    "issue_name": "WAF rules blocking legitimate LaTeX equation submissions",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the WAF logs, I found that the rules triggering false positives are mainly pattern #4528 and #4531, which are looking for script injection in form fields. The LaTeX commands like \\sum_{n=1}^\\infty and \\frac{d}{dx} are getting flagged because they contain special characters in sequences that match our XSS patterns. I recommend we adjust these rules to whitelist common LaTeX syntax patterns.</p>"
+  },
+  {
+    "issue_name": "GPU instance quota exceeded in machine learning preprocessing pipeline",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Got confirmation from AWS support - they've approved our quota increase request for P3 instances from 8 to 32 in us-east-1. The changes should propagate within the next 2-3 hours. I'll monitor CloudWatch metrics and restart the failed jobs once the new quota is active.</p>"
+  },
+  {
+    "issue_name": "Certificate rotation automation failing for internal service mesh mTLS",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the logs, I found that the istio-proxy sidecar isn't getting the new certificates fast enough after rotation. The envoy-sidecar takes ~45s to pick up cert changes, but our pod startup sequence is only waiting 30s. We should increase the preStop hook delay to 60s to ensure clean handoff.</p>"
+  },
+  {
+    "issue_name": "Redis cluster failover mechanism not triggering during network partitions",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the logs, I found that our Sentinel quorum is set to 2 but we have 5 nodes, which is causing the split votes during network partitions. We should adjust this to 3 (majority) and also update the failover-timeout settings to better handle temporary network blips. I'll prepare a PR with these changes.</p>"
+  },
+  {
+    "issue_name": "RabbitMQ queue memory consumption spiking during bulk paper imports",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified that the memory spikes are happening because we're not implementing back pressure correctly in our consumers. The workers are pulling too many messages at once without proper prefetch limits. I suggest we adjust the prefetch count to 50 and implement a batching strategy with acknowledgments after each successful batch processing.</p>"
+  },
+  {
+    "issue_name": "Ingress controller rate limiting not respecting X-Forwarded-For headers",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating further, I found that we need to modify the nginx.ingress.kubernetes.io/configuration-snippet annotation to include real_ip_header X-Forwarded-For and set_real_ip_from directives for our proxy CIDRs. The current configuration is only using remote_addr which explains why we're seeing the throttling issues for institutional users.</p>"
+  },
+  {
+    "issue_name": "Etcd backup snapshots failing integrity verification checks",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the checksum mismatches, I found that the etcd backup process is getting interrupted due to network timeouts between our backup service and the S3 bucket. I've temporarily increased the timeout threshold to 120s and will monitor if this resolves the integrity verification failures.</p>"
+  },
+  {
+    "issue_name": "Container registry garbage collection disrupting concurrent image pulls",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the GC logs, I found that our aggressive pruning settings are causing manifest deletions before the distributed cache can properly sync. I suggest we increase the manifest retention period to 48h and schedule GC runs during our lowest deployment windows (2-4am UTC). This should give us enough buffer for layer replication while still maintaining storage efficiency.</p>"
+  },
+  {
+    "issue_name": "Cross-zone load balancer health checks failing for WebSocket endpoints",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, it looks like the health check timeout settings are too aggressive (set to 3s) for the WebSocket upgrade handshake. I've adjusted the TCP keep-alive intervals to 10s and configured dedicated HTTP health check endpoints (/health/ws) that don't require WebSocket upgrades. Testing in staging now.</p>"
+  },
+  {
+    "issue_name": "VPC flow logs missing entries for internal service mesh traffic",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the Envoy sidecar configs, I found that the RBAC policies are blocking the VPC flow log collectors from accessing the pod metadata. We'll need to update the mesh's NetworkPolicy to explicitly allow traffic monitoring while maintaining zero-trust principles.</p>"
+  },
+  {
+    "issue_name": "Terraform state lock timeout causing concurrent deployment conflicts",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've implemented a new force-unlock mechanism in the pipeline that detects abandoned locks older than 30 minutes and automatically clears them using terraform force-unlock. Also added a cleanup step that runs on pipeline cancellation to properly release locks. Testing in dev environment now - should resolve the timeout conflicts we've been seeing.</p>"
+  },
+  {
+    "issue_name": "ElasticSearch cluster shards failing to relocate after node termination",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, I found that our elasticsearch.yml config has incorrect recovery throttling settings. Current recovery_max_bytes_per_sec is set too low at 40mb, which is causing delayed shard relocation when spot instances terminate. Recommending we increase this to 150mb and adjust concurrent_recoveries to 4 to better handle sudden node losses.</p>"
+  },
+  {
+    "issue_name": "Prometheus time series database running out of storage in citation analytics cluster",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've temporarily increased retention to 12h and adjusted the scrape interval to 30s to reduce cardinality while we implement a proper fix. Also started working on implementing metric relabeling configs to drop unnecessary labels - should reduce storage pressure by ~40% based on initial analysis.</p>"
+  },
+  {
+    "issue_name": "IAM role assumption delays causing timeouts in metadata service",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After debugging with AWS X-Ray, I found that the STS AssumeRole API calls are getting throttled during peak usage. Looks like we're hitting the default rate limit of 15 TPS - I've submitted a support ticket to AWS to increase our quota to 50 TPS for the affected accounts.</p>"
+  },
+  {
+    "issue_name": "Kubernetes node autoscaler failing to terminate nodes with GPU workloads",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the logs, I found that the CA is failing to preempt GPU jobs because they're not implementing the proper pod disruption budget. We'll need to modify our deployment manifests to include proper PDB configs and ensure the apps handle SIGTERM gracefully. I've started working on a patch for the paper-analysis-worker deployments.</p>"
+  },
+  {
+    "issue_name": "Database connection pooling exhaustion during bulk reference imports",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the logs, I found that we're not properly releasing connections back to the pool after bulk transaction rollbacks. I've implemented a fix using PgBouncer's server_reset_query parameter and set server_idle_timeout to 60s to force cleanup of stale connections. Currently testing with a 10k reference dataset to verify the pool stays healthy.</p>"
+  },
+  {
+    "issue_name": "Service mesh proxy memory leak in citation verification endpoints",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the Envoy proxy instances, I found that the memory leak seems to be related to how we're handling the citation verification response buffers. The proxy isn't properly releasing memory when processing large batches (>1000 citations), and the cleanup isn't triggered until we hit the OOM threshold. I'm testing a configuration change to adjust the buffer flush intervals.</p>"
+  },
+  {
+    "issue_name": "Route53 health checks failing for multi-region PDF rendering service",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the Route53 logs, I found that our health check thresholds were too aggressive - we were failing endpoints after just 2 consecutive timeouts instead of 5. I've updated the failure_threshold to 5 and increased the request timeout to 10s to account for PDF generation time. Monitoring the changes now to see if this reduces the false positives.</p>"
+  },
+  {
+    "issue_name": "S3 lifecycle policies failing to archive dormant research datasets",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue to a mismatch between our LastAccessTime tag evaluations and the S3 lifecycle rule conditions. The policy is looking for 'last_accessed' but our ETL pipeline has been writing 'last-accessed' (with a hyphen) for the past 3 months. Will push a fix to standardize the tag format and update the lifecycle rules accordingly.</p>"
+  },
+  {
+    "issue_name": "gRPC load balancer configuration causing connection draining timeouts",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Digging into this - looks like the default keepalive settings in our LB config are too aggressive (GRPC_KEEPALIVE_TIME_MS=10000). I'd suggest bumping this up to at least 30s and adjusting GRPC_KEEPALIVE_TIMEOUT_MS to match our typical computation duration patterns. Will test with a few long-running streams to verify.</p>"
+  },
+  {
+    "issue_name": "Batch processing jobs stuck in terminating state after spot instance interruption",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the logs, it looks like the issue is happening because the spot instance termination handler isn't properly cleaning up the job metadata in our cluster state. We should probably add a grace period check and force cleanup after 10 minutes if the termination sequence hasn't completed normally.</p>"
+  },
+  {
+    "issue_name": "DNS resolution delays in cross-region citation service lookups",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the DNS resolution patterns, I found that our Route53 resolver endpoints are using default TTL of 300s. We should probably reduce this to 60s for the citation service endpoints and implement DNS caching at the application level. @Sarah, can you confirm if we have any concerns about increasing DNS query volume with shorter TTL?</p>"
+  },
+  {
+    "issue_name": "EFS mount targets reaching IOPS limits during concurrent thesis uploads",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After monitoring the IOPS patterns over the last week, I can confirm we're hitting ~90% utilization during peak upload hours (2-4pm). I'd recommend either implementing a queueing system for large uploads or splitting the mount targets across multiple availability zones to better distribute the load. Current burst credits are depleting within 2-3 hours of heavy usage.</p>"
+  },
+  {
+    "issue_name": "Secret rotation automation failing for multi-region database clusters",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the logs, I found that the secret rotation failure occurs because the replication lag between regions sometimes exceeds our current timeout threshold of 30 seconds. We should probably increase the synchronization wait time to 120s and add exponential backoff for retries.</p>"
+  },
+  {
+    "issue_name": "CloudFront edge caching inconsistent for PDF preview thumbnails",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the logs, I found that our cache invalidation patterns weren't accounting for the /preview/* wildcard path correctly. The Lambda@Edge function was using an outdated regex that missed PDF thumbnails with special characters in the filename. Pushing a fix now that updates the invalidation rules to properly handle all thumbnail path variants.</p>"
+  },
+  {
+    "issue_name": "Grafana dashboards showing gaps in metrics collection for ML inference endpoints",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I took a look at the Prometheus storage usage and found we're hitting cardinality limits due to too many unique label combinations on our ML endpoint metrics. We should consider reducing the number of custom labels we're adding to these metrics - right now each model version creates new series.</p>"
+  },
+  {
+    "issue_name": "Network policy conflicts preventing cross-namespace service discovery",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After reviewing the network policies, I found that we have overlapping deny rules in both namespaces that are too broad. The citation-analysis namespace has a default-deny policy that's blocking all ingress except from specific labels, but those labels don't match what we're using in doc-processing. We should probably standardize our label selectors across namespaces.</p>"
+  },
+  {
+    "issue_name": "API Gateway throttling limits too aggressive for batch citation uploads",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the CloudWatch metrics, I found that we're hitting around 2,000 requests/minute during peak institutional upload times. I'd recommend increasing the burst limit to 3,000 and the steady-state rate to 1,500/minute to accommodate these legitimate batch uploads while keeping our abuse protection intact.</p>"
+  },
+  {
+    "issue_name": "Redis cluster experiencing split-brain during AZ failover",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After analyzing the Redis logs, it appears the split-brain is occurring due to incorrect timeout settings between nodes during the AZ transition. I'm proposing we adjust the cluster-node-timeout to 20000ms and implement a minimum-replicas-to-write setting of 2 to prevent the cluster from accepting writes during network partitions.</p>"
+  },
+  {
+    "issue_name": "ElasticSearch snapshot repository corruption in cold storage tier",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the S3 logs, I found that the snapshot corruption seems to be happening during multi-part uploads when segments exceed 5GB. The checksum verification is failing intermittently on larger index shards, particularly for snapshots taken during peak research indexing periods. I've temporarily reduced the chunk size to 1GB to see if this helps with the integrity checks.</p>"
+  },
+  {
+    "issue_name": "Container image vulnerability scanning pipeline exceeding timeout limits",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've increased the scan timeout to 45 minutes as a temporary fix, but we really need to optimize those ML model layers. The pytorch-cuda base image alone is adding 3.8GB to our container size. @sarah could you help review if we can trim down some of the unused model dependencies?</p>"
+  },
+  {
+    "issue_name": "VPC endpoint service quotas reached in primary research region",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Opened a support case with AWS (#87392145) to request a quota increase to 150 endpoints. They're asking for additional justification and usage patterns - @Sarah can you help pull the growth metrics from the last 3 months to support this request?</p>"
+  },
+  {
+    "issue_name": "Race condition in concurrent dataset versioning API",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the root cause - we're not using proper transaction isolation levels in the versioning service. The current READ COMMITTED level isn't sufficient for our concurrent version creation scenario. I recommend implementing SERIALIZABLE isolation and adding advisory locks around the version number generation.</p>"
+  },
+  {
+    "issue_name": "Memory leak in long-running GraphQL subscription connections",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the memory leak, I found that we're not properly calling cleanup() on the subscription context when detecting client disconnect events. I've added a middleware that hooks into the onDisconnect callback to ensure resources get freed. Currently testing with artillery to verify the fix - initial results show memory usage staying stable even with simulated connection drops.</p>"
+  },
+  {
+    "issue_name": "Inconsistent response format for bulk citation export API",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After debugging, I found that the inconsistency happens when the pagination logic kicks in for large result sets. The metadata nesting changes because we're using two different serializer classes (BulkCitationSerializer and LegacyCitationExporter) depending on the batch size. We should standardize on one serialization approach.</p>"
+  },
+  {
+    "issue_name": "Redis cache not invalidating after collaborative annotation updates",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue to the cache invalidation logic in our RedisAnnotationCache service - we're not properly handling the distributed nature of concurrent updates. The invalidation is happening locally but not being propagated across all Redis nodes. Will implement pub/sub pattern to ensure cache consistency across the cluster.</p>"
+  },
+  {
+    "issue_name": "PDF processing queue timeout for large multi-language documents",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've implemented a chunking mechanism that splits large PDFs into 10MB segments before processing. Initial tests show it handles the timeout issue, but we'll need to verify the text extraction accuracy remains consistent across chunk boundaries, especially for right-to-left scripts like Arabic.</p>"
+  },
+  {
+    "issue_name": "Authentication token refresh endpoint returns stale permissions",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the root cause - we're caching the user permissions in Redis with a 15-min TTL, but not invalidating the cache when permissions change in the auth service. We should either reduce the TTL or implement cache invalidation through a message queue when role updates occur.</p>"
+  },
+  {
+    "issue_name": "Metadata extraction service fails for DOIs containing non-ASCII characters",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the HTTP client layer, I found that we're not properly encoding the URL parameters before making the DOI lookup request. I've put together a fix using java.net.URLEncoder with UTF-8 encoding and added a test case with Japanese and German paper titles. Will submit PR shortly.</p>"
+  },
+  {
+    "issue_name": "Batch reference resolution API deadlock during high concurrency",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the database access patterns, I found that we're not using the proper isolation level for the batch operations. We should switch from REPEATABLE READ to READ COMMITTED and implement optimistic locking with version columns to prevent the deadlocks while maintaining data consistency. I've created a POC branch that shows ~40% reduction in lock contention.</p>"
+  },
+  {
+    "issue_name": "WebSocket connection drops during large annotation sync",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the root cause - we're not implementing backpressure handling in the WebSocket consumer. The message queue fills up faster than we can process the annotations, causing the socket to terminate. I'm working on implementing a sliding window approach with auto-reconnect logic to handle large batches gracefully.</p>"
+  },
+  {
+    "issue_name": "Search API ignoring field weights for author name queries",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the ES query DSL, I found that we're using a simple match query without proper field boosting. We'll need to implement a multi_match query with custom field weights - something like {\"first_name\": 3.0, \"middle_name\": 1.0, \"last_name\": 2.0}. I'll push up a PR with these changes tomorrow.</p>"
+  },
+  {
+    "issue_name": "Citation export API fails to escape LaTeX special characters",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the issue in the BibTeX formatter class - we're using a simple string.replace() when we should be using the BibTeX.escapeSpecialChars() utility that properly handles LaTeX control sequences. Will push a fix that implements proper escaping for %, $, _, {, }, \\ and other special characters.</p>"
+  },
+  {
+    "issue_name": "Duplicate entries created by retry logic in reference matching service",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue to the transaction boundary in the RetryableReferenceProcessor class. We're generating new idempotency keys on each retry attempt instead of preserving the original key from the first request. I'll implement a fix using Redis to maintain the idempotency state across retries.</p>"
+  },
+  {
+    "issue_name": "Group permission changes not propagating to nested collections",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the inheritance logic, I found that the permission cascade is failing because we're not properly handling the transaction locks during bulk permission updates. The nested collections are being processed before the parent permission changes are committed, causing a race condition. Will need to refactor the PermissionProcessor service to ensure atomic updates.</p>"
+  },
+  {
+    "issue_name": "API rate limiter bypass through distributed client requests",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've implemented a new rate limiting strategy that tracks both IP and auth token combinations in Redis. We're now using a sliding window counter with a composite key of `{auth_token}:{ip}` and adding per-token aggregate limits. Initial testing shows this successfully catches distributed request patterns while maintaining normal user access.</p>"
+  },
+  {
+    "issue_name": "Malformed XML in CrossRef response parser causing citation failures",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the root cause - the parser isn't properly escaping &amp;#x entities when they appear within author fields. I'm working on a fix using xml.etree's XMLParser with a custom entity handler, but we'll need to add some regression tests to catch these edge cases going forward.</p>"
+  },
+  {
+    "issue_name": "Elastic Search query timeout for complex boolean filters",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've added a composite index on the most frequently filtered fields and implemented query result caching at the application layer. Initial tests show timeout occurrences dropped by ~60%, but we're still seeing issues with queries that combine more than 5 boolean filters. I think we might need to look into implementing pagination by search_after instead of from/size parameters.</p>"
+  },
+  {
+    "issue_name": "Inconsistent timestamp formats in annotation history API",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've isolated the issue - we're not normalizing timestamps during the import process. The importers are directly passing through the raw timestamp strings from the source data. We should add a standardization step in the AnnotationProcessor class to convert all timestamps to ISO8601 before saving to the database.</p>"
+  },
+  {
+    "issue_name": "Orphaned file attachments not cleaned up after failed bulk imports",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've implemented a cleanup job that runs every 30 minutes to scan for orphaned attachments older than 2 hours in the temp storage bucket. It cross-references against the import_jobs table to verify the parent job status before deletion. @Sarah, can you review the PR when you have a chance?</p>"
+  },
+  {
+    "issue_name": "Reference deduplication service failing for preprint versions",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the matching algorithm, I found that we're not properly handling the arXiv to DOI mappings in the CrossRef API responses. When a paper has both versions, we're creating separate reference objects instead of linking them via the relationship metadata. Will need to update the deduplication logic to check for these relationships before creating new entries.</p>"
+  },
+  {
+    "issue_name": "Broken transaction isolation in collaborative note updates",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue to our current READ_COMMITTED isolation level - we should probably upgrade to REPEATABLE_READ or SERIALIZABLE for the collaborative note updates. Looking at the transaction logs, we're seeing multiple overlapping write operations completing within milliseconds of each other without proper version checks.</p>"
+  },
+  {
+    "issue_name": "Missing content-type validation in file upload API",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Added content-type validation using the `file-type` npm package to check MIME types against our allowlist. I'm also implementing a secondary validation layer that reads the file's magic numbers to prevent content-type header spoofing. PR is ready for review at #4532.</p>"
+  },
+  {
+    "issue_name": "Redis cache invalidation failing for partial reference updates",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating further, I found that our Redis eviction policy is set to 'allkeys-lru' which might be contributing to the issue. The cache keys for partial updates are getting evicted before the main reference object keys. I'm testing with 'volatile-ttl' to see if that provides more consistent behavior.</p>"
+  },
+  {
+    "issue_name": "GraphQL resolver timeout during deep nested collection queries",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the resolver execution, I found that we're making around 200+ separate DB queries for a typical 4-level deep collection query. I'm implementing DataLoader batching to consolidate these into bulk queries - should significantly reduce the N+1 problem. Initial tests show query time dropping from ~45s to under 5s for the same payload.</p>"
+  },
+  {
+    "issue_name": "Async PDF processing queue backing up during peak usage",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the worker processes, I found that we're hitting memory limits before CPU becomes the bottleneck. Looks like we're loading entire PDFs into memory instead of streaming them in chunks. I can refactor the processing pipeline to use streams, which should help with the resource allocation issues.</p>"
+  },
+  {
+    "issue_name": "JWT token refresh mechanism failing for concurrent requests",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've implemented a mutex lock in the token refresh handler to prevent concurrent refreshes of the same token. Initial testing shows this resolves the race condition, but we should probably add some retry logic with exponential backoff for the failed requests just to be safe. PR #324 is ready for review.</p>"
+  },
+  {
+    "issue_name": "Mendeley API integration failing to handle author name variants",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've been looking into this and it seems the normalization issue stems from inconsistent handling of initials in the AuthorNameParser class. We might want to implement Levenshtein distance matching with a configurable threshold to catch these variants, similar to what CrossRef does.</p>"
+  },
+  {
+    "issue_name": "Bulk export API not respecting field-level permissions",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Found the issue - the BulkExportManager class is directly querying the database instead of going through the PermissionService layer. I'll need to refactor the export pipeline to use our existing PermissionAwareRepository interface for proper ACL checks.</p>"
+  },
+  {
+    "issue_name": "Citation style processor memory leak for large bibliographies",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling with JProfiler, I found that the CSLProcessor class isn't properly releasing the reference objects after the bibliography rendering is complete. The HashMap holding the citation objects keeps growing because we're not clearing the internal cache between batch processing runs. I'll implement a cache clearing mechanism after each export job completes.</p>"
+  },
+  {
+    "issue_name": "Inconsistent reference key generation for preprint versions",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified that the key collision is happening because we're only using the DOI base in the hash function, ignoring the version suffix. We'll need to modify the BibTeXKeyGenerator class to incorporate both the base DOI and version number in the uniqueness calculation. Should be a straightforward fix but will require updating the test suite.</p>"
+  },
+  {
+    "issue_name": "Rate limiting bypass vulnerability in OAuth token refresh endpoint",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've implemented the fix by adding rate limiting checks in the TokenRefreshHandler middleware. The solution tracks refresh token usage with Redis and shares the same rate limit bucket as the main token endpoint. PR #4382 is ready for review.</p>"
+  },
+  {
+    "issue_name": "DOI resolution service failing to handle Unicode characters in titles",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the Unicode handling, I found that we're not properly encoding the titles using encodeURIComponent() before making the HTTP request to the DOI API. The current implementation only handles URL encoding for basic ASCII characters. I'll implement proper UTF-8 encoding and add test cases with Japanese and German paper titles.</p>"
+  },
+  {
+    "issue_name": "Deadlock in concurrent bibliographic record updates",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've implemented optimistic locking using version columns in the bibliography_entries table and added retry logic with exponential backoff. Initial tests show a 90% reduction in deadlocks under simulated concurrent load, but we should probably do more stress testing before pushing to prod.</p>"
+  },
+  {
+    "issue_name": "Metadata extraction service hanging on malformed PDF metadata",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've added a try-catch block around the XMP metadata parsing and implemented a 30-second worker timeout using Python's multiprocessing.TimeoutError. Initial testing shows workers are now properly terminating when they hit corrupt metadata blocks instead of hanging indefinitely. @Sarah can you review the PR when you have a chance?</p>"
+  },
+  {
+    "issue_name": "CORS configuration blocking legitimate API requests from institutional proxies",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After reviewing the logs, I found that we need to modify the Access-Control-Allow-Origin header to support X-Forwarded-For and X-Real-IP headers from the institutional proxies. Seeing a lot of requests from *.edu domains getting blocked due to the current strict Origin matching.</p>"
+  },
+  {
+    "issue_name": "Citation graph API returning incomplete results for deeply nested references",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the bottleneck - we're hitting MongoDB's default cursor timeout (10 mins) during deep traversals. Implementing a batch processing approach with cursor timeouts disabled should fix this, but we'll need to carefully monitor memory usage. Working on a PR now.</p>"
+  },
+  {
+    "issue_name": "Batch reference import silently failing for RIS files over 5MB",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue - looks like we're not properly handling the stream buffer when parsing large RIS files. The NodeJS stream is getting truncated at 5MB due to the default memory limits, but the promise is still resolving successfully. We should implement chunked processing and add proper error handling in the ReferenceImportService.</p>"
+  },
+  {
+    "issue_name": "API response serialization error for large LaTeX equations",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I took a look at the serialization issue - seems like we're hitting Node's default JSON.stringify() size limits when processing the LaTeX. We might want to consider chunking the equations or switching to a streaming parser like JSONStream for handling these large mathematical expressions.</p>"
+  },
+  {
+    "issue_name": "Elasticsearch indexing deadlock during concurrent author merges",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the deadlock issue, I found that we're not properly handling the versioning of ES documents during concurrent merges. We should implement optimistic locking using the _version field in Elasticsearch and add a retry mechanism with exponential backoff when version conflicts occur. This should resolve the deadlock without requiring manual intervention.</p>"
+  },
+  {
+    "issue_name": "Memory overflow in bibliographic deduplication service",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've been profiling the deduplication service and found that we're keeping too many reference pairs in memory during the Levenshtein distance calculations. We could potentially implement a sliding window approach with Redis caching to handle the memory constraints, though it would require restructuring the matching pipeline. Anyone have experience with this pattern for large-scale fuzzy matching?</p>"
+  },
+  {
+    "issue_name": "API rate limiter not accounting for proxy-forwarded IPs",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've reviewed our Nginx configuration and found that we're not properly extracting the right IP from X-Forwarded-For when there are multiple IPs in the chain. We should probably follow AWS ELB's approach of using the last trusted proxy IP instead of the leftmost one. I can implement this fix but we'll need to update our rate limiting config to whitelist our known institutional proxy IPs first.</p>"
+  },
+  {
+    "issue_name": "Inconsistent handling of UTF-8 characters in BibTeX export",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, I found that we're using the legacy BibtexEncoder class which doesn't properly handle UTF-8 character ranges above U+007F. We should switch to using the ICU4J library's UnicodeSet for proper UTF-8 normalization of the BibTeX output. This would handle both the diacritics in author names and special characters in titles correctly.</p>"
+  },
+  {
+    "issue_name": "Stale cache in citation style preview generator",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, it looks like we're not properly propagating the style version metadata to the cache invalidation service. The cache TTL is set correctly at 24h, but the versioning logic in CitationStyleProcessor.java isn't triggering a forced refresh when style updates are detected. I'll implement a new version-aware cache key structure to fix this.</p>"
+  },
+  {
+    "issue_name": "Async worker pool exhaustion during bulk metadata imports",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I traced the issue to a memory leak in the worker cleanup routine - the pool manager isn't properly handling rejected promises when workers encounter metadata validation errors. Implementing a proper finally() block in the worker lifecycle should fix this. Will have a PR ready in the next hour.</p>"
+  },
+  {
+    "issue_name": "Redis connection pool leaks in annotation versioning service",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the Redis connection patterns, I found we're not properly releasing connections back to the pool after versioning operations complete. I've added a try-with-resources block around the Jedis connections and implemented a proper shutdown hook for the pool. Will push the PR for review shortly.</p>"
+  },
+  {
+    "issue_name": "Malformed JSON responses from author merge endpoint",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, it looks like the JsonSerializer is choking on certain Unicode characters (specifically some Chinese and Arabic author names) during the merge process. I've traced it to our custom JSON encoder not properly handling UTF-16 surrogate pairs. Will need to update the serialization logic to properly escape these sequences.</p>"
+  },
+  {
+    "issue_name": "JWT validation bypass for expired refresh tokens",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've pushed a fix to enforce JWT expiration validation in the AuthMiddleware.java class. Added explicit checks against the 'exp' claim using the Clock.systemUTC() to prevent timezone issues. @Sarah can you review PR #342 when you have a chance?</p>"
+  },
+  {
+    "issue_name": "Inconsistent ETags for cached search results",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Found the root cause - we're using HashMap.keySet() to build the ETag hash which doesn't maintain consistent ordering between JVM instances. I'll modify the code to use TreeMap instead and sort the result keys before generating the hash. This should give us deterministic ETags for identical result sets.</p>"
+  },
+  {
+    "issue_name": "Missing validation for circular reference dependencies",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've started implementing the cycle detection using Tarjan's algorithm for finding strongly connected components in the reference graph. Initial testing shows it catches basic circular dependencies, but I'm concerned about performance impact on large citation trees - might need to optimize the traversal logic.</p>"
+  },
+  {
+    "issue_name": "DOI resolution service failing silently for Crossref API timeouts",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the Crossref timeout issue, I found that we're not properly implementing circuit breaker patterns in the resolver service. I've added a timeout handler that falls back to DataCite API when Crossref response exceeds 5s, and added proper error logging so we can monitor these occurrences in Datadog.</p>"
+  },
+  {
+    "issue_name": "Deadlock in concurrent PDF annotation persistence layer",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After debugging the concurrent writes, I found that our annotation index locking mechanism is using row-level locks but not properly handling the transaction isolation level. I'm implementing a pessimistic locking strategy with a short timeout to prevent the deadlock scenario. Will push a PR for review in the next hour.</p>"
+  },
+  {
+    "issue_name": "Keyboard navigation breaks in search results pagination",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, I found that the focus trap is occurring because the event handlers on the pagination buttons aren't properly updating the tabindex attributes after AJAX updates. I'm working on a fix that uses a FocusManager class to handle the keyboard navigation state properly.</p>"
+  },
+  {
+    "issue_name": "Reference management drag-and-drop fails on touch devices",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After some testing on iPadOS and Surface devices, I found that we need to increase the touch target area to at least 44x44px and add proper touch event handlers for dragstart/dragend. The current implementation only listens for mousedown/mouseup which doesn't properly capture touch interactions. I'll update the DraggableReference component to handle both mouse and touch events.</p>"
+  },
+  {
+    "issue_name": "Color contrast ratios fail WCAG standards in dark mode",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've updated the contrast ratios in the citation preview cards to meet WCAG AA standards - now using #E2E2E2 for text on our dark backgrounds which gives us a 4.6:1 ratio. The annotation sidebar still needs work though, as the current interactive elements are only hitting about 2.8:1.</p>"
+  },
+  {
+    "issue_name": "Bulk metadata editor layout breaks at intermediate breakpoints",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the layout issues, I found that our CSS grid is breaking due to min-width constraints on the table cells. I've implemented a flex-based solution with proper breakpoints that should maintain column alignment across all viewport widths. PR #342 is ready for review.</p>"
+  },
+  {
+    "issue_name": "Screen reader announces duplicate labels in filter panel",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've reviewed the filter panel component and identified the issue - we're using aria-label on both the container and individual filter options, causing the duplication. We should keep the label only on the interactive elements and use aria-labelledby for grouping instead. I'll push a fix for this today.</p>"
+  },
+  {
+    "issue_name": "Citation preview tooltips not rendering LaTeX equations correctly",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the tooltip rendering pipeline, I found the issue - we're not running the LaTeX parser on hover preview content. The MathJax initialization is only happening for the main document body. I'll need to extend the preview renderer to include MathJax processing before the tooltip is displayed.</p>"
+  },
+  {
+    "issue_name": "Multi-select gesture controls unresponsive on iPad Pro",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After debugging the gesture recognizer chain, I found that the UIGestureRecognizer delegate methods aren't being called correctly when multiple touches are detected. Looks like there's a conflict with the scroll view's native gesture handling that's preventing our custom recognizer from receiving the events.</p>"
+  },
+  {
+    "issue_name": "Annotation sidebar collapses unexpectedly during PDF scrolling",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Found the root cause - there's a race condition between the scroll event handler and the sidebar state management. The collapse is triggered when scroll velocity exceeds a certain threshold and the React component hasn't finished its previous state update. Working on a debounced event handler as a fix.</p>"
+  },
+  {
+    "issue_name": "Bibliography style preview not updating in real-time",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Found the root cause - the bibliography preview component is using a stale cache of the citation settings. We'll need to implement a proper state management system to propagate style changes through the render pipeline. Looking at either Redux or Context API to handle this.</p>"
+  },
+  {
+    "issue_name": "Focus state persists incorrectly after modal dismissal",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After some debugging, I found that the issue is in our FocusManager class - we're not properly resetting the focusable elements array when the modal unmounts. I've added a cleanup function in the useEffect hook that resets focus to the last active element before the modal opened.</p>"
+  },
+  {
+    "issue_name": "Collaborative comment threads truncated on narrow viewports",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, it looks like we need to refactor the comment container CSS to use flexbox wrapping instead of the current absolute positioning. The overflow-x: auto property isn't being respected because the parent container width calculation isn't accounting for nested reply indentation on narrow screens.</p>"
+  },
+  {
+    "issue_name": "Auto-save indicator position obscures formatting toolbar",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've pushed a fix to adjust the auto-save indicator's z-index and positioned it to float in the bottom-right corner of the editor container instead. Should resolve the toolbar overlap issue on tablet viewports. @sarah can you verify this works on the iPad Pro you were testing with?</p>"
+  },
+  {
+    "issue_name": "Custom folder color selections reset after browser refresh",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Found the root cause - we're not persisting the color preferences to localStorage, just keeping them in memory. Will implement a new ColorPreferenceManager service to handle state persistence and add migration logic for existing user preferences. Should have a PR ready by EOD.</p>"
+  },
+  {
+    "issue_name": "Export dialog missing progress indicator during large dataset generation",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've added a progress bar component using the Material UI LinearProgress indicator. It now updates based on the citation batch processing status and displays the percentage complete. Should address the feedback about users not knowing if exports are still running.</p>"
+  },
+  {
+    "issue_name": "Tag autocomplete dropdown clips behind reference list on RTL languages",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the RTL rendering issue, I found that the z-index stacking context isn't being properly handled for the autocomplete dropdown. We'll need to adjust the positioning logic in the TagSuggestions component and add explicit z-index values to ensure proper layering in RTL mode.</p>"
+  },
+  {
+    "issue_name": "Floating action button covers abstract text on mobile viewports",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've tested a few solutions and found that adding a bottom padding of 72px to the abstract container gives enough clearance for the FAB without affecting the overall layout. Will push a PR with this fix and some additional viewport testing shortly.</p>"
+  },
+  {
+    "issue_name": "Voice dictation input field loses focus after punctuation commands",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced this to the speech recognition event handler - it's re-initializing the SpeechRecognition instance after each punctuation command instead of maintaining the existing session. Will need to refactor the punctuationHandler() to preserve the input focus state.</p>"
+  },
+  {
+    "issue_name": "Reference preview cards fail to display author highlights on Firefox",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Looks like the issue is caused by Firefox's handling of the ::selection pseudo-element - it's not properly applying the background-color to the dynamically inserted highlight spans. I've tested a workaround using a combination of background-color and a pseudo-element that seems to work consistently across browsers.</p>"
+  },
+  {
+    "issue_name": "Batch DOI lookup modal doesn't preserve scroll position after validation errors",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I think I've found the issue - the modal state gets completely reset during the validation error handling, including the scroll position. We'll need to store the scrollTop value before validation and restore it in the error callback. Should be a relatively quick fix.</p>"
+  },
+  {
+    "issue_name": "Undo/redo stack clears unexpectedly during collaborative editing",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After debugging, I found that the undo stack is being reset whenever we receive operational transforms from other users. Need to modify the UndoManager to preserve local history while merging remote changes. Looking at implementing a separate stack for collaborative events.</p>"
+  },
+  {
+    "issue_name": "Smart folder rule builder dropdown menus fail to scroll on Chrome OS",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Investigated this on my Chromebook - looks like it's related to Chrome OS's custom scrollbar implementation conflicting with our dropdown library's overflow settings. Adding 'overflow-y: scroll !important' to the dropdown container fixes it, but we should probably switch to a more native select component for better OS compatibility.</p>"
+  },
+  {
+    "issue_name": "Search filter chips disappear after applying advanced query parameters",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue to the FilterChipManager component - it's not properly persisting the filter state when the SearchQueryBuilder updates the URL parameters. Will need to implement a proper state sync between these two components.</p>"
+  },
+  {
+    "issue_name": "Keyboard navigation breaks in citation suggestion dropdown after text formatting",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Found the issue - there's a race condition between the formatting toolbar's keydown handler and the citation dropdown's event listeners. The keyboard events aren't properly bubbling up after text formatting is applied. Working on a fix by adding event.stopPropagation() in the right places.</p>"
+  },
+  {
+    "issue_name": "Bulk metadata editor grid cells misaligned after horizontal scrolling",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Looks like the misalignment is happening because we're not properly syncing the header container's horizontal scroll position with the main grid view. I've traced it to the ScrollSync component not handling custom field columns correctly when they exceed the viewport width.</p>"
+  },
+  {
+    "issue_name": "PDF annotation layer renders beneath page content in split-screen mode",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After debugging the z-index issue, I found that the canvas element rendering the annotations wasn't being properly layered in the split-screen container. We'll need to adjust the stacking context and bump up the z-index of the annotation overlay div to sit above both PDF viewports.</p>"
+  },
+  {
+    "issue_name": "Quick citation insertion popover clips through fixed header on scroll",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the issue - the popover's z-index isn't being properly managed relative to the fixed header. We'll need to implement a stacking context for the citation menu and adjust its positioning calculation to account for header overlap during scroll events. Should be a straightforward fix.</p>"
+  },
+  {
+    "issue_name": "Workspace sharing dialog lacks keyboard focus trap",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've added a focus trap using the focus-trap-react library and it's working well for most cases, but I noticed we need to handle the edge case when users click the 'Copy Link' button since it temporarily breaks the trap. Looking at implementing either inert or aria-hidden on background elements as a more robust solution.</p>"
+  },
+  {
+    "issue_name": "Timeline visualization controls unresponsive at 150% browser zoom",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the root cause - the click event listeners are using viewport-relative coordinates instead of element-relative positioning. When zoomed, this creates an offset between where the browser thinks the control elements are and their actual rendered position. Will need to refactor to use getBoundingClientRect() and adjust for zoom level.</p>"
+  },
+  {
+    "issue_name": "Multi-select drag behavior inconsistent when crossing nested folder boundaries",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've been investigating this and it seems the issue stems from how we're handling the drag event propagation in nested DocumentTree components. When the drag operation crosses multiple folder boundaries, we're losing the original selection context because each nested folder instance maintains its own selection state. I'm thinking we need to lift the selection state management up to the root DocumentTree component.</p>"
+  },
+  {
+    "issue_name": "Citation style preview not updating when switching between numbered and author-date formats",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I found the issue - there's a stale state in the CitationPreviewComponent that's not getting cleared when the format toggle event fires. We'll need to add a forceUpdate() call in the styleFormatChanged handler to ensure the preview re-renders with the new format.</p>"
+  },
+  {
+    "issue_name": "Screen reader announces incorrect state for expandable abstract sections",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, I found that the aria-expanded attribute wasn't being properly toggled in the onClick handler for the abstract toggle button. I've submitted a PR that fixes this by updating the ARIA state in sync with the CSS transition. @sarah.a11y could you review the changes when you have a chance?</p>"
+  },
+  {
+    "issue_name": "Inline figure placement controls become unresponsive after consecutive paragraph merges",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've narrowed down the cause - looks like the event listeners for the figure controls aren't being properly rebound after DOM mutations from the paragraph merges. Will push a fix that uses MutationObserver to track these changes and reattach listeners as needed.</p>"
+  },
+  {
+    "issue_name": "Custom reference field validation tooltips persist after form submission",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue - looks like we're not properly cleaning up the tooltip event listeners in the form submission success callback. Will need to add a removeEventListener() call and manually hide any active tooltips via the Bootstrap tooltip API when the form submission completes successfully.</p>"
+  },
+  {
+    "issue_name": "Bibliography style selector resets to default after applying template changes",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced this down to the TemplateManager class not preserving the CitationStyle state during the applyTemplate() operation. We'll need to store the current bibliography style in a temporary variable before applying changes and restore it afterward. Should be a straightforward fix.</p>"
+  },
+  {
+    "issue_name": "Footnote anchor positioning shifts when toggling between editing modes",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue to the DOM reflow happening during mode switches - looks like the footnote anchors aren't properly preserving their relative positions when the content gets re-rendered. Going to try implementing position persistence using data attributes as reference points.</p>"
+  },
+  {
+    "issue_name": "Collaborative comment threads collapse spontaneously during active discussions",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced this to the WebSocket connection dropping momentarily when multiple users are typing simultaneously. The thread collapse seems to be triggered by a race condition between the real-time sync and the UI state management. Going to try implementing a debounce on the collapse/expand actions to prevent this.</p>"
+  },
+  {
+    "issue_name": "Mendeley import dialog freezes when handling large BibTeX files",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've been looking into this - seems like we're hitting a memory bottleneck when parsing large BibTeX entries. The import processor is trying to load the entire file into memory instead of streaming it. I'll implement chunked processing to handle this in smaller batches.</p>"
+  },
+  {
+    "issue_name": "Color contrast ratio insufficient in graph visualization legends",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've updated the color generation algorithm to use a predefined set of WCAG 2.1 compliant color pairs instead of random generation. Each pair now has a minimum contrast ratio of 4.5:1 against the background. Testing with the Axe accessibility tool shows we're now meeting AA standards.</p>"
+  },
+  {
+    "issue_name": "Reference table column resizing breaks after enabling group-by functionality",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Looks like the issue is in the event propagation - the column resize handler is getting blocked by the group header's click event. We'll need to add event.stopPropagation() in the resize handler to prevent the group collapse from triggering. I'll work on a fix this afternoon.</p>"
+  },
+  {
+    "issue_name": "Text selection behavior inconsistent in split-screen PDF comparison mode",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into this, it looks like the issue stems from our PDF.js event handlers not properly scoping the mouseup/mousedown events to their respective viewport containers. I'll try implementing separate selection managers for each panel to prevent the cross-panel selection bleeding.</p>"
+  },
+  {
+    "issue_name": "Auto-complete suggestions disappear behind floating toolbar in abstract editor",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the z-index stacking context, I found that the autocomplete dropdown's z-index is set to 1000 while the floating toolbar is at 1050. I'll submit a PR to bump up the dropdown's z-index to 1100 to ensure it always renders above the toolbar.</p>"
+  },
+  {
+    "issue_name": "Table of contents panel fails to highlight current section during smooth scroll",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've been looking into this and found that our scroll event listener's throttling might be too aggressive (currently at 300ms). We could try reducing it to 100ms and add a requestAnimationFrame wrapper to better sync with the browser's rendering cycle. This should make the TOC highlighting feel more responsive.</p>"
+  },
+  {
+    "issue_name": "Batch tag editor modal loses focus state after applying filters",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Looks like the focus loss is happening because we're doing a full re-render of the modal content when filters update, rather than just updating the tag list. We should be able to fix this by wrapping the filter update in a React.memo() and only re-rendering the tag results component.</p>"
+  },
+  {
+    "issue_name": "Reference preview cards fail to display non-Latin character sets",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue to our text rendering pipeline - looks like we're not properly handling UTF-8 encoding when generating the preview cards. The citation parser assumes ASCII encoding which breaks when it hits CJK or Cyrillic characters. We'll need to update the TextRenderer class to properly handle Unicode.</p>"
+  },
+  {
+    "issue_name": "Keyboard shortcuts panel becomes unscrollable after search filter application",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, I found that the scrolling issue is caused by a React event handler not properly updating the overflow property when the filteredShortcuts state changes. We'll need to update the useEffect dependency array and add a cleanup function to reset the scroll state.</p>"
+  },
+  {
+    "issue_name": "Multi-monitor drag-and-drop functionality breaks for reference manager panels",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Found the root cause - the cursor position calculation is using screen coordinates relative to the primary display instead of the virtual screen space. Will need to refactor the DragDropManager to properly handle Windows' multi-monitor coordinate system and implement proper hit testing across display boundaries.</p>"
+  },
+  {
+    "issue_name": "Annotation highlight colors reset to default when switching between dark and light themes",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced this to the theme switcher not properly triggering a re-render of the PDF annotation layer. We're storing the highlight colors in localStorage, but the PDFAnnotationManager isn't subscribing to theme change events. Will need to refactor the color management system to handle theme context updates.</p>"
+  },
+  {
+    "issue_name": "Document outline minimap renders incorrectly on high DPI displays",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, the root cause appears to be incorrect canvas scaling factors being applied when rendering the minimap SVG elements. We'll need to implement proper devicePixelRatio handling and update our canvas context scaling to match the display's DPI settings. I've started working on a fix using the window.devicePixelRatio API.</p>"
+  },
+  {
+    "issue_name": "Voice dictation input field fails to maintain cursor position during pause periods",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After debugging, I've found that the cursor position reset is happening due to the SpeechRecognition API's onresult event firing multiple times during pause detection. We'll need to implement a debounce mechanism and maintain a cursor position cache to prevent the jumps during those interim results.</p>"
+  },
+  {
+    "issue_name": "Bulk metadata editor grid loses column customizations after sorting operations",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue to the grid state management in DataGrid.tsx - looks like we're not persisting the column configurations in the internal gridState object after sort events. We'll need to modify the handleSort() method to maintain the existing columnConfig while updating just the sortModel.</p>"
+  },
+  {
+    "issue_name": "Citation preview modal freezes on large bibliography imports",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue to the citation parsing loop - we're trying to render preview cards for all citations simultaneously instead of implementing pagination. Going to refactor this to load citations in batches of 25 with infinite scroll to prevent the UI thread from blocking.</p>"
+  },
+  {
+    "issue_name": "Markdown editor loses formatting when pasting tables with merged cells",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've been digging into this and it looks like our DOM sanitizer is stripping the rowspan/colspan attributes during paste. The sanitizer config needs to be updated to whitelist these table-specific attributes while still maintaining XSS protection. I'll create a PR with the fix soon.</p>"
+  },
+  {
+    "issue_name": "Annotation sidebar fails to sync across multiple browser tabs",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the root cause - we're not using the BroadcastChannel API to sync state between tabs. Currently looking at implementing a shared worker solution instead of relying on localStorage since we need more real-time communication between browser contexts.</p>"
+  },
+  {
+    "issue_name": "Reference graph visualization crashes with circular citation networks",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the crash, I found that our recursive traversal algorithm isn't handling cyclical references properly. We'll need to implement a cycle detection mechanism using a visited nodes set to prevent infinite loops when rendering the graph. I can start working on this fix tomorrow morning.</p>"
+  },
+  {
+    "issue_name": "LaTeX equation renderer misaligns inline mathematical expressions",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the alignment issue, I found that the problem stems from inconsistent baseline calculations in the MathJax renderer. The current implementation is using default vertical-align CSS properties, but we need to explicitly set the baseline alignment to match the surrounding text's line-height.</p>"
+  },
+  {
+    "issue_name": "PDF thumbnail generation fails for documents over 50MB",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling with Chrome DevTools, I found that the WebAssembly heap is hitting its limit at ~2GB when processing large PDFs. We might need to implement chunked processing or increase the memory limit in the pdf.js-wasm configuration. I've created a branch with a potential fix using streaming chunks.</p>"
+  },
+  {
+    "issue_name": "Search filter dropdown components not keyboard accessible",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the issue - we need to add proper aria-controls and role=\"combobox\" attributes to the filter dropdowns, plus implement keyboard event listeners for arrow keys. The current Select component we're using doesn't support ARIA states out of the box, so we might need to either extend it or switch to a more accessible component library like react-aria.</p>"
+  },
+  {
+    "issue_name": "Collaborative note sections lose real-time updates after 30 minutes",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the memory leak - we're not properly cleaning up Socket.IO event listeners when users switch between note sections. Each section switch adds new listeners without removing old ones, causing the connection to crash after ~30 mins. Will implement a cleanup function in the WebSocket manager to handle this.</p>"
+  },
+  {
+    "issue_name": "Citation style preview fails to update when switching reference formats",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After debugging the React component, I found that we're not properly handling the state updates in CitationPreviewRenderer. The component is using React.memo() but our comparison function isn't detecting the format change in props. I'll push a fix that implements a proper shouldComponentUpdate check and adds format type to the dependency array.</p>"
+  },
+  {
+    "issue_name": "Bulk tag assignment modal freezes on collections over 1000 papers",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling with Chrome DevTools, I found we're triggering full re-renders on every checkbox toggle due to improper React memo usage. The checkbox state updates are cascading through the entire collection tree instead of being localized. Going to implement virtualization and proper memoization to handle large collections.</p>"
+  },
+  {
+    "issue_name": "Research timeline component fails to render events spanning multiple years",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, the timeline rendering issue appears to be caused by incorrect date delta calculations in the TimelineGrid component. The current logic assumes months as fixed 30-day periods, which breaks when handling multi-year spans. I'll refactor it to use moment.js for more accurate date diffing.</p>"
+  },
+  {
+    "issue_name": "Export to Word document corrupts embedded reference metadata",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the HTML-to-Word conversion logic, I found that our custom data-ref attributes are being stripped during the XSLT transformation phase. We'll need to modify the DocumentBuilder class to properly map these attributes to Word's native citation field codes (CITATION, REF, etc.). I've started working on a fix but it's more complex than initially thought.</p>"
+  },
+  {
+    "issue_name": "Author network visualization fails to load with custom SVG node icons",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After debugging the force simulation, I found that the SVG icons are causing issues with D3's bounding box calculations. The force.collide() function isn't getting accurate dimensions when we use complex SVG paths instead of basic circles. We might need to explicitly set collision radiuses based on the icon viewBox dimensions.</p>"
+  },
+  {
+    "issue_name": "PDF page thumbnail grid fails to maintain aspect ratios in list view",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I traced the aspect ratio issue - looks like we're not properly handling the containerWidth prop when calculating dimensions in list mode. The current calculation uses the grid view constraints even after switching views. I'll update the thumbnail component to properly respond to container queries and maintain aspect ratios across view transitions.</p>"
+  },
+  {
+    "issue_name": "Citation snippet preview tooltips remain visible after element deletion",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Tracked this down to the tooltip manager's destroy() method not being called during the citation cleanup process. The current event listener only handles explicit user dismissal but misses the deletion case. I'll add a hook into the citation removal flow to properly dispose of the tooltip instances.</p>"
+  },
+  {
+    "issue_name": "Reading progress tracker desyncs on split-screen document comparison",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, I found that the viewport's getBoundingClientRect() is returning dimensions for the full window rather than the split container. We'll need to modify the scroll position calculation to reference the parent split-pane element's dimensions instead of window.innerHeight.</p>"
+  },
+  {
+    "issue_name": "Infinite scroll in search results triggers multiple concurrent API calls",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I added a 300ms debounce to the scroll event listener using lodash's debounce utility, which should prevent the API call storm. Also wrapped the fetch calls in AbortController to cancel pending requests when new ones come in. Will submit PR for review shortly.</p>"
+  },
+  {
+    "issue_name": "Reference sorting algorithm fails to handle author names with special characters",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've found that switching to String.prototype.localeCompare() with the 'base' sensitivity option helps handle the diacritics properly. Been testing with Turkish, Vietnamese and Czech author names and it's working much better now. Will push the changes for review once I finish the unit tests.</p>"
+  },
+  {
+    "issue_name": "Highlight color picker modal breaks keyboard focus trap",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the issue - the focus trap logic in the ColorPickerModal component isn't properly handling the tabindex attributes. We can fix this by using the FocusTrap library we already have in our dependencies and wrapping the modal content with FocusTrap.Provider. Should be a fairly quick fix.</p>"
+  },
+  {
+    "issue_name": "Document outline panel fails to expand nested sections properly",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the recursive rendering issue, I found that the problem occurs when the DOM nodes for nested sections aren't properly clearing their previous state before re-rendering. We should probably implement a cleanup function in the expandSection() method to prevent the stale node references.</p>"
+  },
+  {
+    "issue_name": "Virtual scrolling performance degrades with large annotation datasets",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the virtual scroll component, I found that we're creating new IntersectionObserver instances for each annotation element instead of reusing them. I've started implementing a pooling system for the observers that should help with memory consumption and smooth out the scrolling behavior.</p>"
+  },
+  {
+    "issue_name": "Document comparison view fails to synchronize scroll positions across panels",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, it seems the scroll sync is breaking because we're using requestAnimationFrame incorrectly in the ScrollSyncManager class. The throttling logic is causing a delay between the scroll events, which makes the sync feel janky. I'll try implementing a more efficient approach using IntersectionObserver instead.</p>"
+  },
+  {
+    "issue_name": "Batch citation export modal freezes during MLA to APA conversion",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've isolated the memory leak - we're creating new string objects for each citation during conversion instead of using a string pool. Will refactor the CitationConverter class to use StringBuilder and implement object pooling. Should resolve the freezing issues for large batch conversions.</p>"
+  },
+  {
+    "issue_name": "Text selection highlight overlay misaligned after PDF rotation",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue to the transform matrix calculations in the viewer component. The rotation angle isn't being properly factored into the highlight coordinate system when we apply the PDF rotation. Will need to update the getPageViewport() logic to account for this.</p>"
+  },
+  {
+    "issue_name": "Annotation sidebar renders incomplete LaTeX equations in comment threads",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Looks like the MathJax rendering engine isn't being properly initialized in the sidebar context. I've traced it to the commentThread.js component where we're not waiting for the MathJax promise to resolve before displaying the thread content.</p>"
+  },
+  {
+    "issue_name": "Reference graph visualization fails to update on collaborative edits",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've tracked down the issue - we're not properly propagating the WebSocket events for graph updates through the visualization layer. The D3.js force-directed layout is only being triggered on the initial websocket connection, but missing subsequent collaborative edit events. Will implement a new event listener to handle real-time updates.</p>"
+  },
+  {
+    "issue_name": "Multi-monitor PDF view loses window position on workspace switch",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue to the workspace event handler not properly maintaining the window state context. The PDF viewer component stores positions in WorkspaceState, but it's getting cleared during the workspace switch event. Will need to implement a proper state persistence mechanism between workspace transitions.</p>"
+  },
+  {
+    "issue_name": "Custom bibliography style editor fails to validate CSL syntax",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've been digging into this and found that we're not running the CSL through the official CSL schema validator before accepting it. We should integrate the CSL 1.0.2 RelaxNG schema to catch malformed XML during the editing process. I can set up the client-side validation using a JS port of the validator.</p>"
+  },
+  {
+    "issue_name": "Table of contents generation fails for documents with nested appendices",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the TOC generation code, I found that we're not properly handling the depth tracking for appendix sections. The current parser treats all appendix headings as top-level elements, ignoring the actual nesting structure. I'll need to modify the HeadingTreeBuilder class to properly maintain the hierarchy state when processing appendix nodes.</p>"
+  },
+  {
+    "issue_name": "Citation style preview widget crashes when switching between numeric and author-date formats",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Found the root cause - we're not properly cleaning up the citation renderer's internal state between format switches. The MutationObserver is still trying to process changes on stale DOM nodes after the format toggle. Will implement a proper teardown sequence for the renderer components.</p>"
+  },
+  {
+    "issue_name": "Search filter chips disappear after applying multiple metadata-based filters",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Just reproduced this in Chrome and Firefox - looks like the filter chip container div isn't properly expanding to accommodate new chips after the third filter. The chips are being created in the DOM but the container's max-height CSS property is preventing them from being visible. Should be a straightforward fix by adjusting the flexbox layout.</p>"
+  },
+  {
+    "issue_name": "Collaborative annotation markers stack incorrectly in multi-user sessions",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After digging into the WebSocket event handlers, I found that we're not properly cleaning up stale annotation position data when users become inactive. The position recalculation isn't accounting for disconnected users, which explains why it only happens after extended multi-user sessions.</p>"
+  },
+  {
+    "issue_name": "Document version comparison slider fails to update minimap highlights",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the minimap sync issue, I found that we're not properly handling the requestAnimationFrame callback when the slider position changes. The highlight positions are being calculated using stale DOM measurements, which explains why they get out of sync during sliding. I'll push a fix to handle the reflow timing properly.</p>"
+  },
+  {
+    "issue_name": "Bibliography export dialog freezes during large dataset concatenation",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the concatenation process, I found that we're doing synchronous string operations in the main thread, which explains the UI freeze. I'm working on moving this to a Web Worker and adding a progress indicator. Should have a PR ready by tomorrow.</p>"
+  },
+  {
+    "issue_name": "Reference management sidebar loses state after browser tab suspension",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced this to a missing event listener for the visibilitychange API. The sidebar state is stored in memory but not properly rehydrated when the tab becomes visible again. I'll implement a state persistence mechanism using localStorage as a fallback.</p>"
+  },
+  {
+    "issue_name": "Markdown editor toolbar becomes unresponsive after inserting multiple LaTeX blocks",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After debugging with Chrome DevTools, I found that the event listeners on the toolbar buttons aren't getting properly cleaned up when LaTeX blocks are rendered. Each new block creates a new MathJax instance that conflicts with the editor's event handling. Working on a fix by implementing a proper cleanup routine for the MathJax elements.</p>"
+  },
+  {
+    "issue_name": "Citation suggestions dropdown remains visible after switching workspaces",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, I found the root cause - we're not properly cleaning up the citation suggester component in the workspace switch event handler. I'll add a cleanup function to destroy the dropdown instance and remove any lingering DOM elements before initializing the new workspace context.</p>"
+  },
+  {
+    "issue_name": "Bulk tag assignment modal freezes during keyword extraction",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've identified the root cause - the keyword extraction is running synchronously in the main thread using the NLP pipeline. I'll refactor this to use Web Workers and add a progress indicator. Should have a PR ready by tomorrow.</p>"
+  },
+  {
+    "issue_name": "Reading progress tracker desyncs after offline mode synchronization",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the sync issues, I found that the IndexedDB transaction isn't properly handling concurrent updates when merging offline reading sessions. We'll need to implement a timestamp-based conflict resolution strategy and add a queue for pending sync operations to prevent data loss during the merge.</p>"
+  },
+  {
+    "issue_name": "Cross-reference links break after collaborative note merging",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the merge conflicts, I found that we're not properly maintaining the UUID mappings during the three-way merge process. The reference table gets overwritten instead of being intelligently merged, which explains why cross-refs are breaking. I'm working on a fix that uses a persistent reference map during conflict resolution.</p>"
+  },
+  {
+    "issue_name": "Literature review canvas fails to auto-save node positions",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've traced the issue to the serialization layer - we're not properly persisting the x/y coordinates when the force simulation is stopped. The node positions are stored in memory but get lost during the JSON stringify process. Will need to modify the Node interface to explicitly include position properties.</p>"
+  },
+  {
+    "issue_name": "PDF viewer performance degradation with multiple annotation layers",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the rendering pipeline, I found that we're not properly disposing of WebGL contexts when switching between annotation layers. Each layer is maintaining its own separate rendering context instead of reusing existing ones. I'll implement context pooling which should help with both the memory growth and switching delays.</p>"
+  },
+  {
+    "issue_name": "Citation graph visualization fails to load with over 200 connected nodes",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After profiling the rendering pipeline, I found that we're hitting a WebGL vertex limit with the force-directed graph layout. I'm working on implementing node clustering and level-of-detail rendering to handle large graphs more efficiently. Should have a PR ready by end of week that introduces dynamic node merging when zoom level is above certain threshold.</p>"
+  },
+  {
+    "issue_name": "Reference suggestion popover misaligned in split-screen mode",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating, it looks like we need to account for both the scrollTop value of the secondary editor container and its offset position relative to the viewport. I've created a PR that adds a ScrollPositionManager class to handle these calculations - should fix the alignment issues in both panes.</p>"
+  },
+  {
+    "issue_name": "Batch metadata editor state corruption after network interruption",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">I've implemented a basic state snapshot mechanism that saves the metadata edits to IndexedDB every 30 seconds and on network state changes. Still need to work on the recovery flow, but this should prevent most of the data loss scenarios we're seeing. @Sarah, could you review the PR when you have a chance?</p>"
+  },
+  {
+    "issue_name": "Text highlight extraction fails with mixed RTL/LTR content",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After debugging, I found that our text selection engine isn't properly handling Unicode Bidirectional Algorithm when parsing the PDF content stream. We'll need to modify the text extraction logic to respect the bidi control characters and maintain proper text runs. I've started implementing a fix using ICU4J's BidiRun class.</p>"
+  },
+  {
+    "issue_name": "Collaborative comment threads collapse unexpectedly during active discussions",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After debugging the thread collapse issue, I found that the WebSocket event handlers aren't properly syncing the thread expansion state across clients. The collapse/expand actions are being broadcast to all users but the local state isn't being preserved, causing the UI to flicker between states. Going to implement a debounced state reconciliation with a shared timestamp to fix this.</p>"
+  },
+  {
+    "issue_name": "Custom keyboard shortcuts stop responding after export operation",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After some digging, I found that the event handlers aren't being properly rebound after the export process completes. It looks like we're using stale references to the DOM elements when the document tree gets rebuilt post-export. I'll try implementing a handler reconnection routine in the ExportManager class.</p>"
+  },
+  {
+    "issue_name": "Citation preview tooltips fail to display for DOI links in dark mode",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">After investigating the tooltip rendering issue, it seems the dark mode theme variables aren't being properly inherited by the citation preview component. The tooltip's background-color is using the default light theme value instead of respecting the CSS custom properties we set for dark mode contexts.</p>"
+  },
+  {
+    "issue_name": "Infinite scroll pagination breaks after applying multiple tag filters",
+    "project_slug": "unknown/unknown",
+    "comment_html": "<p class=\"editor-paragraph-block\">Looks like the issue is in the pagination event handler - it's not properly handling the tag filter state when constructing the API query params. I've tracked it down to the filterParams not being preserved when the IntersectionObserver triggers the next page load. Will push a fix soon.</p>"
+  }
+]
